@@ -3,704 +3,921 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Supernova Artworks — Coloring Books for Kids</title>
-  <meta name="description" content="Beautiful coloring and story books celebrating world cultures for kids ages 4–10. By Novjean Kannathara." />
-  <meta property="og:title" content="Supernova Artworks — Coloring Books for Kids" />
-  <meta property="og:description" content="Bold lines, big spaces, zero gray — perfect for little hands." />
-  <meta property="og:image" content="images/og-cover.jpg" />
+  <title>Supernova Artworks — Layout C Preview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --navy:  #0D1B2A;
-      --navy2: #1A2E45;
-      --gold:  #D4AF37;
-      --gold2: #F0D060;
-      --white: #FFFFFF;
-      --light: #F5F0E8;
-      --muted: #A0A8B0;
-      --card-bg: #132236;
-      --radius: 16px;
+      --cream: #FAF8F4;
+      --ink:   #111111;
+      --gold:  #C8992A;
+      --gold2: #E8B84B;
+      --muted: #888880;
+      --rule:  rgba(0,0,0,0.10);
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
 
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: var(--navy);
-      color: var(--white);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ── NAV ─────────────────────────────────── */
+    /* ── NAV ── */
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 5%;
-      border-bottom: 1px solid rgba(212,175,55,0.2);
-      position: sticky;
-      top: 0;
-      background: var(--navy);
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6%;
+      height: 64px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      transition: box-shadow 0.3s;
     }
-    .nav-logo {
-      font-size: 1.2rem;
-      font-weight: 900;
-      color: var(--gold);
-      letter-spacing: 0.5px;
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.08); }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; letter-spacing: 0.5px;
+      color: var(--ink);
     }
-    .nav-logo span { color: var(--white); }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta {
-      background: var(--gold);
-      color: var(--navy);
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.85rem;
+    .logo em { color: var(--gold); font-style: normal; }
+    .nav-links { display: flex; gap: 32px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    .nav-links a { color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-shop {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      background: var(--ink); color: var(--cream);
+      padding: 10px 22px; border-radius: 3px;
       transition: background 0.2s;
     }
-    .nav-cta:hover { background: var(--gold2); }
+    .nav-shop:hover { background: var(--gold); }
 
-    /* ── HERO ────────────────────────────────── */
+    /* ── HERO ── */
     .hero {
-      text-align: center;
-      padding: 80px 5% 60px;
-      max-width: 700px;
-      margin: 0 auto;
+      padding: 140px 6% 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      min-height: 100vh;
+      border-bottom: 1px solid var(--rule);
     }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(212,175,55,0.15);
-      color: var(--gold);
-      border: 1px solid rgba(212,175,55,0.4);
-      border-radius: 50px;
-      padding: 5px 16px;
-      font-size: 0.8rem;
+    .hero-text {}
+    .hero-kicker {
+      font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 24px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
       font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      color: var(--ink);
+      margin-bottom: 28px;
     }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 16px;
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-desc {
+      font-size: 1.05rem; line-height: 1.75; color: #555;
+      max-width: 460px; margin-bottom: 44px;
     }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--gold);
-    }
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 36px;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .hero-cta-row { display: flex; gap: 16px; align-items: center; }
     .btn-primary {
-      background: var(--gold);
-      color: var(--navy);
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: transform 0.15s, background 0.2s;
-    }
-    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
-    .btn-secondary {
-      border: 2px solid rgba(212,175,55,0.5);
-      color: var(--gold);
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: border-color 0.2s, transform 0.15s;
-    }
-    .btn-secondary:hover { border-color: var(--gold); transform: translateY(-2px); }
-
-    /* ── STATS BAR ───────────────────────────── */
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: clamp(24px, 5vw, 60px);
-      flex-wrap: wrap;
-      padding: 32px 5%;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 60px;
-    }
-    .stat { text-align: center; }
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--gold);
-    }
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    /* ── SECTION HEADER ──────────────────────── */
-    .section {
-      padding: 0 5% 80px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .section-header h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
-    .section-header p {
-      color: var(--muted);
-      font-size: 1rem;
-    }
-    .section-header .tag {
       display: inline-block;
-      background: rgba(212,175,55,0.12);
-      color: var(--gold);
-      border-radius: 50px;
-      padding: 4px 14px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
+      background: var(--ink); color: var(--cream);
+      padding: 14px 32px; border-radius: 3px;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold); }
+    .btn-ghost {
+      display: inline-block;
+      border: 1.5px solid var(--ink); color: var(--ink);
+      padding: 13px 28px; border-radius: 3px;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      height: 480px;
+    }
+    .hero-card {
+      position: relative; overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      cursor: pointer;
+    }
+    .hero-card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease;
+    }
+    .hero-card:hover img { transform: scale(1.04); }
+    .hero-card.tall { grid-row: 1 / 3; }
+    .hero-card-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 14px 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6));
+      font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: white; font-weight: 700;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .hero-card:hover .hero-card-label { opacity: 1; }
+
+    /* ── TICKER ── */
+    .ticker {
+      overflow: hidden; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      padding: 14px 0; background: var(--ink); color: var(--cream);
+    }
+    .ticker-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: ticker 28s linear infinite;
+    }
+    .ticker-item {
+      font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase;
+      padding: 0 40px; flex-shrink: 0;
+      display: flex; align-items: center; gap: 18px;
+    }
+    .ticker-dot { color: var(--gold); font-size: 1rem; }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
 
-    /* ── BOOK GRID ───────────────────────────── */
+    /* ── SECTION HEADER ── */
+    .section-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding: 72px 6% 36px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; line-height: 1.1;
+    }
+    .section-head h2 em { font-style: italic; color: var(--gold); }
+    .section-head .see-all {
+      font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase;
+      font-weight: 700; color: var(--muted);
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .section-head .see-all:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* ── COLORING BOOK GRID ── */
     .book-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border-bottom: 1px solid var(--rule);
     }
-    .book-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: transform 0.2s, border-color 0.2s;
-      display: flex;
-      flex-direction: column;
+    .book-cell {
+      background: var(--cream);
+      padding: 32px 28px;
+      display: flex; flex-direction: column;
+      cursor: pointer;
+      transition: background 0.25s;
     }
-    .book-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(212,175,55,0.3);
-    }
-    .book-cover {
-      width: 100%;
+    .book-cell:hover { background: #F0EDE6; }
+    .book-cell-img {
+      position: relative; overflow: hidden;
+      border-radius: 3px;
       aspect-ratio: 1 / 1;
-      object-fit: cover;
-      background: linear-gradient(135deg, var(--navy2), #0a1628);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
     }
-    .book-cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .book-cell-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s;
     }
-    .book-info {
-      padding: 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+    .book-cell:hover .book-cell-img img { transform: scale(1.05); }
+    .book-cell-badge {
+      position: absolute; top: 10px; right: 10px;
+      background: var(--gold); color: white;
+      font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 700; padding: 4px 10px; border-radius: 2px;
     }
-    .book-flag {
-      font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-    .book-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 6px;
-      flex: 1;
-    }
-    .book-age {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-    .btn-buy {
-      display: block;
-      text-align: center;
-      background: var(--gold);
-      color: var(--navy);
-      padding: 9px 0;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.82rem;
-      transition: background 0.2s;
-    }
-    .btn-buy:hover { background: var(--gold2); }
-
-    /* ── STORY BOOKS SECTION ─────────────────── */
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 28px;
-    }
-    .story-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid rgba(212,175,55,0.15);
-      display: flex;
-      gap: 16px;
-      padding: 20px;
-      transition: transform 0.2s, border-color 0.2s;
-      align-items: flex-start;
-    }
-    .story-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(212,175,55,0.4);
-    }
-    .story-emoji {
-      font-size: 3rem;
-      flex-shrink: 0;
-    }
-    .story-info { flex: 1; }
-    .story-badge {
-      display: inline-block;
-      background: rgba(212,175,55,0.15);
-      color: var(--gold);
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 2px 10px;
-      border-radius: 50px;
+    .book-cell-flag { font-size: 1.4rem; margin-bottom: 6px; }
+    .book-cell-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700; line-height: 1.3;
       margin-bottom: 8px;
     }
-    .story-title {
-      font-size: 1rem;
-      font-weight: 800;
-      line-height: 1.3;
-      margin-bottom: 6px;
+    .book-cell-meta { font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .book-cell-buy {
+      margin-top: auto;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2px; width: fit-content;
+      transition: color 0.2s, border-color 0.2s;
     }
-    .story-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.5;
+    .book-cell-buy:hover { color: var(--gold); border-color: var(--gold); }
+    .book-cell-buy svg { width: 12px; height: 12px; }
+
+    /* ── FEATURED SPREAD ── */
+    .featured {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--rule);
+    }
+    .featured-img {
+      position: relative; overflow: hidden;
+      min-height: 540px;
+    }
+    .featured-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s;
+    }
+    .featured:hover .featured-img img { transform: scale(1.04); }
+    .featured-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--cream));
+    }
+    .featured-body {
+      padding: 80px 7%;
+      display: flex; flex-direction: column; justify-content: center;
+      border-left: 1px solid var(--rule);
+    }
+    .featured-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem; line-height: 1; font-weight: 700;
+      color: rgba(0,0,0,0.06); margin-bottom: -20px;
+    }
+    .featured-kicker {
+      font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 16px;
+    }
+    .featured-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      line-height: 1.2; font-weight: 700; margin-bottom: 20px;
+    }
+    .featured-desc {
+      font-size: 0.95rem; line-height: 1.8; color: #555;
+      margin-bottom: 36px;
+    }
+    .featured-price {
+      font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 10px;
+    }
+    .featured-price strong { color: var(--ink); font-size: 1.4rem; letter-spacing: 0; }
+
+    /* ── STORY BOOKS STRIP ── */
+    .story-strip {
+      padding: 72px 6%;
+      border-bottom: 1px solid var(--rule);
+    }
+    .story-strip h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 8px;
+    }
+    .story-strip h2 em { font-style: italic; color: var(--gold); }
+    .story-strip .sub {
+      font-size: 0.9rem; color: var(--muted); margin-bottom: 48px;
+    }
+    .story-cards {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
+      background: var(--rule);
+    }
+    .story-card {
+      background: var(--cream);
+      display: grid; grid-template-columns: 220px 1fr;
+      overflow: hidden; cursor: pointer;
+      transition: background 0.25s;
+    }
+    .story-card:hover { background: #F0EDE6; }
+    .story-card-img {
+      overflow: hidden;
+    }
+    .story-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .story-card:hover .story-card-img img { transform: scale(1.04); }
+    .story-card-body {
+      padding: 36px 40px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .story-card-kicker {
+      font-size: 0.68rem; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 12px;
+    }
+    .story-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; line-height: 1.3; font-weight: 700;
       margin-bottom: 12px;
     }
+    .story-card-desc { font-size: 0.88rem; line-height: 1.75; color: #666; margin-bottom: 28px; }
+    .story-card-buy {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--ink); border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2px; width: fit-content;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .story-card-buy:hover { color: var(--gold); border-color: var(--gold); }
 
-    /* ── ABOUT ───────────────────────────────── */
-    .about-section {
-      background: var(--navy2);
-      border-top: 1px solid rgba(212,175,55,0.15);
-      border-bottom: 1px solid rgba(212,175,55,0.15);
-      padding: 60px 5%;
-      text-align: center;
-      margin-bottom: 60px;
+    /* ── PHILOSOPHY BAND ── */
+    .philosophy {
+      padding: 100px 6%;
+      display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
+      align-items: start;
+      border-bottom: 1px solid var(--rule);
     }
-    .about-inner {
-      max-width: 600px;
-      margin: 0 auto;
+    .phil-label {
+      font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--muted); font-weight: 700;
+      padding-top: 6px;
     }
-    .about-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), #8B6914);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      margin: 0 auto 20px;
-      border: 3px solid var(--gold);
+    .phil-body {}
+    .phil-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      line-height: 1.4; font-style: italic;
+      color: var(--ink); margin-bottom: 36px;
     }
-    .about-inner h2 {
-      font-size: 1.5rem;
-      font-weight: 900;
-      margin-bottom: 12px;
+    .phil-text { font-size: 0.95rem; line-height: 1.85; color: #555; max-width: 620px; margin-bottom: 40px; }
+    .phil-stats {
+      display: flex; gap: 48px;
     }
-    .about-inner p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
+    .phil-stat {}
+    .phil-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; font-weight: 700; color: var(--ink);
+      line-height: 1;
     }
+    .phil-stat-label { font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
 
-    /* ── SOCIAL STRIP ────────────────────────── */
-    .social-strip {
-      display: flex;
-      justify-content: center;
+    /* ── MINI GRID ── */
+    .mini-grid-section { padding: 72px 6%; border-bottom: 1px solid var(--rule); }
+    .mini-grid-head {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      margin-bottom: 36px;
+    }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
       gap: 16px;
-      flex-wrap: wrap;
-      padding: 0 5% 60px;
     }
-    .social-btn {
-      display: flex;
+    .mini-cell {
+      position: relative; overflow: hidden;
+      border-radius: 3px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+      cursor: pointer;
+    }
+    .mini-cell img { width: 100%; display: block; transition: transform 0.4s; }
+    .mini-cell:hover img { transform: scale(1.06); }
+    .mini-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.55);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px;
+      opacity: 0; transition: opacity 0.3s;
+      padding: 12px;
+    }
+    .mini-cell:hover .mini-overlay { opacity: 1; }
+    .mini-overlay span {
+      font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase;
+      color: white; font-weight: 700; text-align: center;
+    }
+    .mini-overlay a {
+      font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold2); font-weight: 700;
+      border-bottom: 1px solid var(--gold2); padding-bottom: 1px;
+    }
+
+    /* ── NEWSLETTER ── */
+    .newsletter {
+      padding: 100px 6%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
       align-items: center;
-      gap: 10px;
-      background: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 50px;
-      padding: 12px 24px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      transition: border-color 0.2s, transform 0.15s;
+      background: var(--ink); color: var(--cream);
     }
-    .social-btn:hover {
-      border-color: var(--gold);
-      transform: translateY(-2px);
+    .nl-label {
+      font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px; font-weight: 700;
     }
-    .social-icon { font-size: 1.2rem; }
+    .nl-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.15; font-weight: 700; margin-bottom: 18px;
+    }
+    .nl-title em { font-style: italic; color: var(--gold2); }
+    .nl-sub { font-size: 0.95rem; line-height: 1.75; color: #aaa; }
+    .nl-form { display: flex; flex-direction: column; gap: 16px; }
+    .nl-input {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 3px;
+      padding: 16px 20px;
+      color: var(--cream); font-family: 'Nunito', sans-serif; font-size: 0.95rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .nl-input::placeholder { color: rgba(255,255,255,0.3); }
+    .nl-input:focus { border-color: var(--gold); }
+    .nl-submit {
+      background: var(--gold); color: var(--ink);
+      border: none; border-radius: 3px;
+      padding: 16px 28px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .nl-submit:hover { background: var(--gold2); }
+    .nl-note { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
 
-    /* ── FOOTER ──────────────────────────────── */
+    /* ── FOOTER ── */
     footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 28px 5%;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.82rem;
+      background: var(--ink); color: var(--cream);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 48px 6% 32px;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 40px;
     }
-    footer a { color: var(--gold); }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--cream);
+    }
+    .footer-logo em { color: var(--gold); font-style: normal; }
+    .footer-links { display: flex; gap: 28px; justify-content: center; }
+    .footer-links a { font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { text-align: right; font-size: 0.72rem; color: rgba(255,255,255,0.25); }
 
-    /* ── RESPONSIVE ──────────────────────────── */
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .book-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      .stats { gap: 20px; }
+
+    /* ── FESTIVAL BADGES ── */
+    .badge-now {
+      position: absolute; top: 10px; right: 10px;
+      background: #1B7A3E; color: #fff;
+      font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 700; padding: 4px 10px; border-radius: 2px;
+      white-space: nowrap;
+    }
+    .badge-soon {
+      position: absolute; top: 10px; right: 10px;
+      background: var(--gold); color: #fff;
+      font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 700; padding: 4px 10px; border-radius: 2px;
+      white-space: nowrap;
+    }
+    .badge-new {
+      position: absolute; top: 10px; left: 10px;
+      background: var(--ink); color: #fff;
+      font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 700; padding: 4px 10px; border-radius: 2px;
+    }
+    .featured-festival-badge {
+      display: inline-block;
+      background: #1B7A3E; color: #fff;
+      font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 700; padding: 5px 14px; border-radius: 2px;
+      margin-bottom: 14px;
+    }
+    .featured-festival-badge.soon { background: var(--gold); }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 110px 5% 60px; }
+      .hero-visual { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .hero-card.tall { grid-row: auto; }
+      .book-grid { grid-template-columns: repeat(2, 1fr); }
+      .featured { grid-template-columns: 1fr; }
+      .featured-img { min-height: 300px; }
+      .featured-img-overlay { background: none; }
+      .featured-body { border-left: none; border-top: 1px solid var(--rule); padding: 48px 5%; }
+      .story-cards { grid-template-columns: 1fr; }
+      .story-card { grid-template-columns: 140px 1fr; }
+      .story-card-body { padding: 24px 28px; }
+      .philosophy { grid-template-columns: 1fr; gap: 24px; }
+      .phil-label { writing-mode: horizontal-tb; }
+      .mini-grid { grid-template-columns: repeat(3, 1fr); }
+      .newsletter { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; text-align: center; }
+      .footer-copy { text-align: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Supernova<span> Artworks</span></div>
-  <div class="nav-links">
-    <a href="#coloring-books">Coloring Books</a>
-    <a href="#story-books">Story Books</a>
-    <a href="#about">About</a>
-  </div>
-  <a class="nav-cta" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Shop on Amazon</a>
-</nav>
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="logo">Supernova <em>Artworks</em></div>
+    <div class="nav-links">
+      <a href="#coloring">Coloring</a>
+      <a href="#stories">Stories</a>
+      <a href="#about">About</a>
+    </div>
+    <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="nav-shop">Shop on Amazon</a>
+  </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-badge">✨ 20+ Books Published</div>
-  <h1>Coloring Books That <em>Celebrate the World</em></h1>
-  <p>Bold lines, big spaces, zero gray — perfect for little hands.<br>Every book is a journey through a real festival, a real culture, a real celebration.</p>
-  <div class="hero-actions">
-    <a class="btn-primary" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">🛍 Browse All Books</a>
-    <a class="btn-secondary" href="https://www.instagram.com/supernova.artworks" target="_blank">📸 Follow @supernova.artworks</a>
-  </div>
-</div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-kicker">Award-winning Children's Books</p>
+      <h1 class="hero-title">Coloring the <em>world's</em> celebrations</h1>
+      <p class="hero-desc">
+        From Songkran to Easter, Vishu to Vaisakhi — beautifully illustrated coloring books that bring every child into the world's most joyful festivals.
+      </p>
+      <div class="hero-cta-row">
+        <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="btn-primary">Browse All Books</a>
+        <a href="#coloring" class="btn-ghost">See Collections</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card tall">
+        <picture><source srcset="images/songkran.avif" type="image/avif"><img src="images/songkran.png" alt="Songkran" /></picture>
+        <div class="hero-card-label">Songkran Festival</div>
+      </div>
+      <div class="hero-card">
+        <picture><source srcset="images/vishu.avif" type="image/avif"><img src="images/vishu.png" alt="Vishu" /></picture>
+        <div class="hero-card-label">Vishu</div>
+      </div>
+      <div class="hero-card">
+        <picture><source srcset="images/vaisakhi.avif" type="image/avif"><img src="images/vaisakhi.png" alt="Vaisakhi" /></picture>
+        <div class="hero-card-label">Vaisakhi</div>
+      </div>
+    </div>
+  </section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="stat-number">20+</div><div class="stat-label">Books Published</div></div>
-  <div class="stat"><div class="stat-number">15+</div><div class="stat-label">Cultures Celebrated</div></div>
-  <div class="stat"><div class="stat-number">Ages 4–10</div><div class="stat-label">Perfect For</div></div>
-  <div class="stat"><div class="stat-number">$9.99</div><div class="stat-label">Every Book</div></div>
-</div>
-
-<!-- FESTIVAL COLORING BOOKS -->
-<div class="section" id="coloring-books">
-  <div class="section-header">
-    <div class="tag">🎨 Coloring Books</div>
-    <h2>Festival & Cultural Coloring Books</h2>
-    <p>Each book brings a real-world festival to life through bold, beautiful illustrations.</p>
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="ticker-dot">★</span> 20+ Books</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> 14 Countries</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> Available on Amazon</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> Paperback &amp; Hardcover</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> Kindle Edition</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> AI Illustrated</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> 20+ Books</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> 14 Countries</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> Available on Amazon</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> Paperback &amp; Hardcover</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> Kindle Edition</span>
+      <span class="ticker-item"><span class="ticker-dot">★</span> AI Illustrated</span>
+    </div>
   </div>
+
+  <!-- COLORING BOOKS GRID -->
+  <div class="section-head" id="coloring">
+    <h2>Coloring <em>Books</em></h2>
+    <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="see-all">View all on Amazon →</a>
+  </div>
+
   <div class="book-grid">
-
-    <div class="book-card">
-      <div class="book-cover">🌊</div>
-      <div class="book-info">
-        <div class="book-flag">🇹🇭</div>
-        <div class="book-title">Happy Songkran! Thailand's Big Water Festival</div>
-        <div class="book-age">Ages 4–10 · 16 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+    <div class="book-cell" data-book="songkran">
+      <div class="book-cell-img">
+        <picture><source srcset="images/songkran.avif" type="image/avif"><img src="images/songkran.png" alt="Songkran" /></picture>
+        
       </div>
+      <div class="book-cell-flag">🇹🇭</div>
+      <div class="book-cell-title">Songkran Festival Coloring Book</div>
+      <div class="book-cell-meta">Thailand · 30 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0DJJL7JWG" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
     </div>
-
-    <div class="book-card">
-      <div class="book-cover">🌸</div>
-      <div class="book-info">
-        <div class="book-flag">🇮🇳</div>
-        <div class="book-title">Golden Sunrise in God's Own Country — Vishu</div>
-        <div class="book-age">Ages 4–10 · 18 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/dp/B0GRSZH836" target="_blank">Buy on Amazon</a>
+    <div class="book-cell" data-book="vishu">
+      <div class="book-cell-img">
+        <picture><source srcset="images/vishu.avif" type="image/avif"><img src="images/vishu.png" alt="Vishu" /></picture>
       </div>
+      <div class="book-cell-flag">🇮🇳</div>
+      <div class="book-cell-title">Vishu Coloring Book</div>
+      <div class="book-cell-meta">Kerala, India · 30 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0DJJL7JWG" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
     </div>
-
-    <div class="book-card">
-      <div class="book-cover">✝️</div>
-      <div class="book-info">
-        <div class="book-flag">🇬🇹</div>
-        <div class="book-title">Semana Santa — A Holy Week Coloring Adventure</div>
-        <div class="book-age">Ages 4–10 · 18 pages · EN & ES</div>
-        <a class="btn-buy" href="https://www.amazon.com/dp/B0GRPWP411" target="_blank">Buy on Amazon</a>
+    <div class="book-cell" data-book="vaisakhi">
+      <div class="book-cell-img">
+        <picture><source srcset="images/vaisakhi.avif" type="image/avif"><img src="images/vaisakhi.png" alt="Vaisakhi" /></picture>
       </div>
+      <div class="book-cell-flag">🇮🇳</div>
+      <div class="book-cell-title">Vaisakhi Coloring Book</div>
+      <div class="book-cell-meta">Punjab · 30 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0DJJL7JWG" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
     </div>
-
-    <div class="book-card">
-      <div class="book-cover">🌾</div>
-      <div class="book-info">
-        <div class="book-flag">🇮🇳</div>
-        <div class="book-title">Happy Vaisakhi! Golden Fields & Brave Hearts</div>
-        <div class="book-age">Ages 4–10 · 16 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+    <div class="book-cell" data-book="semana-santa">
+      <div class="book-cell-img">
+        <picture><source srcset="images/semana-santa.avif" type="image/avif"><img src="images/semana-santa.png" alt="Semana Santa" /></picture>
       </div>
+      <div class="book-cell-flag">🇪🇸</div>
+      <div class="book-cell-title">Semana Santa Coloring Book</div>
+      <div class="book-cell-meta">Spain · 30 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0DJJL7JWG" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
     </div>
-
-    <div class="book-card">
-      <div class="book-cover">✝️</div>
-      <div class="book-info">
-        <div class="book-flag">🇪🇹</div>
-        <div class="book-title">Happy Fasika! Ethiopia's Joyful Easter</div>
-        <div class="book-age">Ages 4–10 · 16 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+    <div class="book-cell" data-book="fasika">
+      <div class="book-cell-img">
+        <picture><source srcset="images/fasika.avif" type="image/avif"><img src="images/fasika.png" alt="Fasika" /></picture>
       </div>
+      <div class="book-cell-flag">🇪🇹</div>
+      <div class="book-cell-title">Fasika Ethiopian Easter</div>
+      <div class="book-cell-meta">Ethiopia · 30 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0DJJL7JWG" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
     </div>
-
-    <div class="book-card">
-      <div class="book-cover">🪷</div>
-      <div class="book-info">
-        <div class="book-flag">🌏</div>
-        <div class="book-title">Happy Vesak! A Buddha Day Coloring Book</div>
-        <div class="book-age">Ages 4–10 · 16 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+    <div class="book-cell" data-book="vesak">
+      <div class="book-cell-img">
+        <picture><source srcset="images/vesak.avif" type="image/avif"><img src="images/vesak.png" alt="Vesak" /></picture>
       </div>
+      <div class="book-cell-flag">🪷</div>
+      <div class="book-cell-title">Vesak Festival Coloring Book</div>
+      <div class="book-cell-meta">Buddhist · 30 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0DJJL7JWG" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
     </div>
-
-    <div class="book-card">
-      <div class="book-cover">🐣</div>
-      <div class="book-info">
-        <div class="book-flag">🇮🇳</div>
-        <div class="book-title">Hop Hop Hallelujah! Easter in God's Own Country</div>
-        <div class="book-age">Ages 4–10 · 17 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+    <div class="book-cell" data-book="easter">
+      <div class="book-cell-img">
+        <picture><source srcset="images/easter.avif" type="image/avif"><img src="images/easter.jpg" alt="Easter" /></picture>
       </div>
+      <div class="book-cell-flag">🐣</div>
+      <div class="book-cell-title">Easter Coloring Book</div>
+      <div class="book-cell-meta">Global · 30 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0DJJL7JWG" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
     </div>
-
-    <div class="book-card">
-      <div class="book-cover">🏮</div>
-      <div class="book-info">
-        <div class="book-flag">🇰🇭</div>
-        <div class="book-title">Happy Chaul Chnam Thmey! Khmer New Year</div>
-        <div class="book-age">Ages 4–10 · 16 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+    <div class="book-cell" data-book="khmer">
+      <div class="book-cell-img">
+        <picture><source srcset="images/khmer.avif" type="image/avif"><img src="images/khmer.png" alt="Khmer New Year" /></picture>
       </div>
+      <div class="book-cell-flag">🇰🇭</div>
+      <div class="book-cell-title">Khmer New Year Coloring Book</div>
+      <div class="book-cell-meta">Cambodia · 30 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0DJJL7JWG" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
     </div>
-
-    <div class="book-card">
-      <div class="book-cover">🪔</div>
-      <div class="book-info">
-        <div class="book-flag">🇱🇰</div>
-        <div class="book-title">Happy Avurudu! Sinhala & Tamil New Year</div>
-        <div class="book-age">Ages 4–10 · 16 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
-      </div>
-    </div>
-
-    <div class="book-card">
-      <div class="book-cover">🌺</div>
-      <div class="book-info">
-        <div class="book-flag">🇮🇳</div>
-        <div class="book-title">Appu's Onam Adventure — Kerala Coloring Book</div>
-        <div class="book-age">Ages 4–10 · 16 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
-      </div>
-    </div>
-
-    <div class="book-card">
-      <div class="book-cover">🇮🇳</div>
-      <div class="book-info">
-        <div class="book-flag">🇮🇳</div>
-        <div class="book-title">Colors of Freedom — India</div>
-        <div class="book-age">Ages 4–10 · 22 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
-      </div>
-    </div>
-
-    <div class="book-card">
-      <div class="book-cover">🌍</div>
-      <div class="book-info">
-        <div class="book-flag">🌍</div>
-        <div class="book-title">The Great India Adventure</div>
-        <div class="book-age">Ages 4–10 · 20 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
-      </div>
-    </div>
-
   </div>
-</div>
 
-<!-- ANIMALS COLORING BOOKS -->
-<div class="section">
-  <div class="section-header">
-    <div class="tag">🐾 Animals & Nature</div>
-    <h2>Animal Coloring Books</h2>
-    <p>Meet adorable animal families and nature heroes from around the world.</p>
+  <!-- FEATURED SPREAD — Avurudu -->
+  <div class="featured" data-book="avurudu">
+    <div class="featured-img">
+      <picture><source srcset="images/avurudu.avif" type="image/avif"><img src="images/avurudu.jpg" alt="Sinhala New Year" /></picture>
+      <div class="featured-img-overlay"></div>
+    </div>
+    <div class="featured-body">
+      <div class="featured-num">09</div>
+      <div class="featured-kicker">🇱🇰 Sri Lanka · New This Season</div>
+      <h2 class="featured-title">Sinhala &amp; Tamil New Year Coloring Book</h2>
+      <p class="featured-desc">
+        Celebrate Avurudu with 30 beautifully illustrated pages capturing the lanterns, games, traditional sweets and ceremonies of Sri Lanka's most joyful festival.
+      </p>
+      <div class="featured-price">From <strong>$9.99</strong></div>
+      <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="btn-primary" style="width: fit-content; margin-top: 8px;">Buy on Amazon</a>
+    </div>
   </div>
-  <div class="book-grid">
 
-    <div class="book-card">
-      <div class="book-cover">🐾</div>
-      <div class="book-info">
-        <div class="book-flag">🐻</div>
-        <div class="book-title">Hugs, Hops & Happy Families</div>
-        <div class="book-age">Ages 4–10 · 14 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+  <!-- STORY BOOKS -->
+  <div class="story-strip" id="stories">
+    <h2>Story <em>Books</em></h2>
+    <p class="sub">Illustrated chapter books that bring festivals to life</p>
+    <div class="story-cards">
+      <div class="story-card">
+        <div class="story-card-img">
+          <picture><source srcset="images/semana-santa-story.avif" type="image/avif"><img src="images/semana-santa-story.png" alt="Semana Santa Story Book" /></picture>
+        </div>
+        <div class="story-card-body">
+          <div class="story-card-kicker">🇪🇸 Story Book</div>
+          <div class="story-card-title">The Week of Miracles</div>
+          <p class="story-card-desc">Follow young Sofia through Holy Week in Sevilla — processions, candlelight, and the living faith of a city that never forgets.</p>
+          <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="story-card-buy">
+            Read Now
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-card-img">
+          <picture><source srcset="images/vesak-story.avif" type="image/avif"><img src="images/vesak-story.png" alt="Vesak Story Book" /></picture>
+        </div>
+        <div class="story-card-body">
+          <div class="story-card-kicker">🪷 Story Book</div>
+          <div class="story-card-title">The Light of Vesak</div>
+          <p class="story-card-desc">A young monk learns the meaning of compassion through the lantern-lit celebrations of Vesak, the holiest day in the Buddhist calendar.</p>
+          <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="story-card-buy">
+            Read Now
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+          </a>
+        </div>
       </div>
     </div>
-
-    <div class="book-card">
-      <div class="book-cover">🐢</div>
-      <div class="book-info">
-        <div class="book-flag">🌊</div>
-        <div class="book-title">Terry the Tortoise's Coral Adventure</div>
-        <div class="book-age">Ages 4–10 · 16 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
-      </div>
-    </div>
-
-    <div class="book-card">
-      <div class="book-cover">🐱</div>
-      <div class="book-info">
-        <div class="book-flag">🌍</div>
-        <div class="book-title">Whiskers Around the World — A Purrfect Adventure</div>
-        <div class="book-age">Ages 4–10 · 12 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
-      </div>
-    </div>
-
-    <div class="book-card">
-      <div class="book-cover">🌿</div>
-      <div class="book-info">
-        <div class="book-flag">🌱</div>
-        <div class="book-title">Little Wildlife Protectors — Nature's Young Heroes</div>
-        <div class="book-age">Ages 4–10 · 16 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
-      </div>
-    </div>
-
-    <div class="book-card">
-      <div class="book-cover">🐷</div>
-      <div class="book-info">
-        <div class="book-flag">🐽</div>
-        <div class="book-title">Piggly Adventures</div>
-        <div class="book-age">Ages 4–10 · 16 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
-      </div>
-    </div>
-
-    <div class="book-card">
-      <div class="book-cover">🐘</div>
-      <div class="book-info">
-        <div class="book-flag">🇮🇳</div>
-        <div class="book-title">Snuggle Paws of India</div>
-        <div class="book-age">Ages 4–10 · 20 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
-      </div>
-    </div>
-
-    <div class="book-card">
-      <div class="book-cover">🔵</div>
-      <div class="book-info">
-        <div class="book-flag">🧘</div>
-        <div class="book-title">Mandalas for Mindfulness</div>
-        <div class="book-age">Ages 8+ · 48 pages</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
-      </div>
-    </div>
-
   </div>
-</div>
 
-<!-- STORY BOOKS -->
-<div class="section" id="story-books">
-  <div class="section-header">
-    <div class="tag">📖 Story Books</div>
-    <h2>Illustrated Story Books</h2>
-    <p>Full-color stories that bring festivals to life for young readers ages 4–8.</p>
-  </div>
-  <div class="story-grid">
-
-    <div class="story-card">
-      <div class="story-emoji">🌺</div>
-      <div class="story-info">
-        <div class="story-badge">Story Book · EN & ES</div>
-        <div class="story-title">¡Felices Pascuas! — Sofia's Semana Santa Adventure</div>
-        <div class="story-desc">Follow Sofia through Guatemala's magical Holy Week — alfombras, candlelit processions, and flowers falling from balconies on Easter Sunday.</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+  <!-- MINI GRID -->
+  <div class="mini-grid-section">
+    <h3 class="mini-grid-head">More books in the collection</h3>
+    <div class="mini-grid">
+      <div class="mini-cell">
+        <picture><source srcset="images/india.avif" type="image/avif"><img src="images/india.png" alt="India Mandalas" /></picture>
+        <div class="mini-overlay">
+          <span>India Mandalas</span>
+          <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
+        </div>
+      </div>
+      <div class="mini-cell">
+        <picture><source srcset="images/terry.avif" type="image/avif"><img src="images/terry.png" alt="Terry the Tortoise" /></picture>
+        <div class="mini-overlay">
+          <span>Terry the Tortoise</span>
+          <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
+        </div>
+      </div>
+      <div class="mini-cell">
+        <picture><source srcset="images/hugs-hops.avif" type="image/avif"><img src="images/hugs-hops.png" alt="Hugs Hops Happy Families" /></picture>
+        <div class="mini-overlay">
+          <span>Hugs, Hops &amp; Happy Families</span>
+          <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
+        </div>
+      </div>
+      <div class="mini-cell">
+        <picture><source srcset="images/avurudu.avif" type="image/avif"><img src="images/avurudu.jpg" alt="Avurudu" /></picture>
+        <div class="mini-overlay">
+          <span>Sinhala New Year</span>
+          <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
+        </div>
+      </div>
+      <div class="mini-cell">
+        <picture><source srcset="images/khmer.avif" type="image/avif"><img src="images/khmer.png" alt="Khmer" /></picture>
+        <div class="mini-overlay">
+          <span>Khmer New Year</span>
+          <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
+        </div>
+      </div>
+      <div class="mini-cell">
+        <picture><source srcset="images/easter.avif" type="image/avif"><img src="images/easter.jpg" alt="Easter" /></picture>
+        <div class="mini-overlay">
+          <span>Easter</span>
+          <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="story-card">
-      <div class="story-emoji">🪷</div>
-      <div class="story-info">
-        <div class="story-badge">Story Book · Coming Soon</div>
-        <div class="story-title">The Vesak Lantern — A Buddha Day Story</div>
-        <div class="story-desc">A glowing story about kindness, lanterns, and the light that lives in all of us — celebrating Vesak with little ones.</div>
-        <a class="btn-buy" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">See All Books</a>
+  <!-- PHILOSOPHY -->
+  <div class="philosophy" id="about">
+    <div class="phil-label">About</div>
+    <div class="phil-body">
+      <p class="phil-quote">"Every child deserves to see their festival on the page."</p>
+      <p class="phil-text">
+        Supernova Artworks creates children's coloring and story books that celebrate the world's most beautiful cultural festivals. Founded by Novjean Kannathara, every book is designed to help children learn about traditions — from their own heritage or from cultures around the world — through the simple joy of coloring.
+      </p>
+      <div class="phil-stats">
+        <div class="phil-stat">
+          <div class="phil-stat-num">20+</div>
+          <div class="phil-stat-label">Books Published</div>
+        </div>
+        <div class="phil-stat">
+          <div class="phil-stat-num">14</div>
+          <div class="phil-stat-label">Countries Covered</div>
+        </div>
+        <div class="phil-stat">
+          <div class="phil-stat-num">30+</div>
+          <div class="phil-stat-label">Pages Per Book</div>
+        </div>
       </div>
     </div>
-
   </div>
-</div>
 
-<!-- ABOUT -->
-<div class="about-section" id="about">
-  <div class="about-inner">
-    <div class="about-avatar">✨</div>
-    <h2>Hi, I'm Novjean</h2>
-    <p>
-      I create coloring and story books that celebrate the rich tapestry of world cultures —
-      from Kerala's golden Vishu to Guatemala's vibrant Semana Santa to Thailand's splashing Songkran.
-      Each book is designed to help children connect with their roots, discover new traditions,
-      and fall in love with the beauty of diversity. Bold lines, big spaces, and a little bit of wonder on every page.
-    </p>
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <div>
+      <div class="nl-label">Stay in the loop</div>
+      <h2 class="nl-title">New book <em>every</em> season</h2>
+      <p class="nl-sub">Get notified when we release a new coloring book — a new festival, a new country, a new adventure for your child.</p>
+    </div>
+    <div class="nl-form">
+      <input type="email" class="nl-input" placeholder="Your email address" />
+      <button class="nl-submit">Notify Me</button>
+      <p class="nl-note">No spam. Just new books. Unsubscribe anytime.</p>
+    </div>
   </div>
-</div>
 
-<!-- SOCIAL -->
-<div class="social-strip">
-  <a class="social-btn" href="https://www.instagram.com/supernova.artworks" target="_blank">
-    <span class="social-icon">📸</span> @supernova.artworks
-  </a>
-  <a class="social-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">
-    <span class="social-icon">🛍</span> Amazon Author Page
-  </a>
-  <a class="social-btn" href="https://www.youtube.com/@supernovaartworks" target="_blank">
-    <span class="social-icon">▶️</span> YouTube
-  </a>
-  <a class="social-btn" href="https://www.threads.net/@supernova.artworks" target="_blank">
-    <span class="social-icon">🧵</span> Threads
-  </a>
-</div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Supernova <em>Artworks</em></div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/supernova.artworks" target="_blank">Instagram</a>
+      <a href="https://www.youtube.com/@SupernovaArtworks" target="_blank">YouTube</a>
+      <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Amazon</a>
+    </div>
+    <div class="footer-copy">© 2025 Supernova Artworks · All rights reserved</div>
+  </footer>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Supernova Artworks · <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">All books on Amazon</a> · Made with ❤️ for curious little minds</p>
-</footer>
+  <script>
+    // ── NAV SCROLL ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
 
+    // ── FESTIVAL DATE ENGINE ──
+    // month is 1-indexed. window = days either side still "in season".
+    // For variable festivals (Easter, Vesak, Fasika) we store approximate annual dates.
+    const FESTIVALS = {
+      'songkran':     [{ month: 4, day: 13, window: 21 }],
+      'vishu':        [{ month: 4, day: 14, window: 14 }],
+      'vaisakhi':     [{ month: 4, day: 13, window: 14 }],
+      'semana-santa': [{ month: 3, day: 29, window: 21 }, { month: 4, day: 5, window: 21 }], // Holy Week + Easter
+      'fasika':       [{ month: 4, day: 19, window: 21 }], // Ethiopian Easter approx
+      'vesak':        [{ month: 5, day: 10, window: 21 }], // Full moon in May
+      'easter':       [{ month: 4, day: 5,  window: 14 }], // Easter Sunday
+      'khmer':        [{ month: 4, day: 13, window: 14 }],
+      'avurudu':      [{ month: 4, day: 13, window: 14 }],
+    };
+
+    // Books published in last 90 days get a "New" badge (right-hand corner)
+    const NEW_BOOKS = ['avurudu', 'khmer'];
+
+    function dayOfYear(d) {
+      const start = new Date(d.getFullYear(), 0, 0);
+      const diff = d - start;
+      return Math.floor(diff / 86400000);
+    }
+
+    function daysUntilFestival(month, day) {
+      const now = new Date();
+      const thisYear = new Date(now.getFullYear(), month - 1, day);
+      const nextYear = new Date(now.getFullYear() + 1, month - 1, day);
+      const diffThis = Math.round((thisYear - now) / 86400000);
+      const diffNext = Math.round((nextYear - now) / 86400000);
+      // Use whichever occurrence is closest
+      if (Math.abs(diffThis) <= Math.abs(diffNext)) return diffThis;
+      return diffNext;
+    }
+
+    function getFestivalStatus(bookKey) {
+      const dates = FESTIVALS[bookKey];
+      if (!dates) return null;
+      let closest = null;
+      for (const d of dates) {
+        const diff = daysUntilFestival(d.month, d.day);
+        if (closest === null || Math.abs(diff) < Math.abs(closest.diff)) {
+          closest = { diff, window: d.window };
+        }
+      }
+      if (!closest) return null;
+      const { diff, window: win } = closest;
+      if (diff >= -win && diff <= win) return 'now';
+      if (diff > win && diff <= 60) return 'soon';
+      return null;
+    }
+
+    // Apply badges to book-cell grid
+    document.querySelectorAll('.book-cell[data-book]').forEach(cell => {
+      const key = cell.dataset.book;
+      const imgDiv = cell.querySelector('.book-cell-img');
+      const status = getFestivalStatus(key);
+      if (status === 'now') {
+        const b = document.createElement('span');
+        b.className = 'badge-now';
+        b.textContent = 'Celebrate Now!';
+        imgDiv.appendChild(b);
+      } else if (status === 'soon') {
+        const b = document.createElement('span');
+        b.className = 'badge-soon';
+        b.textContent = 'Coming Soon';
+        imgDiv.appendChild(b);
+      }
+      if (NEW_BOOKS.includes(key)) {
+        const b = document.createElement('span');
+        b.className = 'badge-new';
+        b.textContent = 'New';
+        imgDiv.appendChild(b);
+      }
+    });
+
+    // Apply badge to featured spread
+    const featured = document.querySelector('.featured[data-book]');
+    if (featured) {
+      const key = featured.dataset.book;
+      const kicker = featured.querySelector('.featured-kicker');
+      const status = getFestivalStatus(key);
+      if (kicker && status) {
+        const b = document.createElement('span');
+        b.className = 'featured-festival-badge' + (status === 'soon' ? ' soon' : '');
+        b.textContent = status === 'now' ? '🎉 Celebrate Now!' : '📅 Coming Soon';
+        kicker.parentNode.insertBefore(b, kicker);
+      }
+    }
+  </script>
 </body>
 </html>
