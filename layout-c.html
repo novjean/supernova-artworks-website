@@ -97,8 +97,9 @@
     .hero-visual {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
+      grid-template-rows: 1fr 1fr;
       gap: 12px;
+      height: 480px;
     }
     .hero-card {
       position: relative; overflow: hidden;
@@ -107,7 +108,7 @@
       cursor: pointer;
     }
     .hero-card img {
-      width: 100%; display: block;
+      width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform 0.5s ease;
     }
     .hero-card:hover img { transform: scale(1.04); }
