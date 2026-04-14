@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supernova Artworks — Layout B Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:  #080F18;
+      --navy2: #0F1E2E;
+      --navy3: #162840;
+      --gold:  #D4AF37;
+      --gold2: #F0D060;
+      --white: #FFFFFF;
+      --cream: #F5EDD8;
+      --muted: #7A8896;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 7%;
+      mix-blend-mode: normal;
+      transition: background 0.4s, border-color 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(8,15,24,0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212,175,55,0.12);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; color: var(--gold);
+    }
+    .logo span { color: var(--white); font-style: italic; }
+    .nav-links { display: flex; gap: 40px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+    .nav-links a { opacity: 0.6; transition: opacity 0.2s, color 0.2s; }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+    .nav-btn {
+      background: var(--gold); color: var(--navy);
+      padding: 10px 24px; border-radius: 4px;
+      font-size: 0.8rem; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--gold2); }
+
+    /* ── HERO — full viewport, text left / cover right ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 7% 80px;
+      position: relative; z-index: 2;
+    }
+    .hero-kicker {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-kicker::before {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+    }
+    .hero-left h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -1px;
+      margin-bottom: 32px;
+    }
+    .hero-left h1 em { font-style: italic; color: var(--gold); display: block; }
+    .hero-left p {
+      font-size: 1.05rem; color: var(--muted); line-height: 1.75;
+      max-width: 420px; margin-bottom: 48px;
+      border-left: 2px solid rgba(212,175,55,0.4);
+      padding-left: 20px;
+    }
+    .hero-actions { display: flex; gap: 14px; }
+    .btn-solid {
+      background: var(--gold); color: var(--navy);
+      padding: 16px 36px; border-radius: 4px;
+      font-weight: 900; font-size: 0.88rem; letter-spacing: 0.5px; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-solid:hover { background: var(--gold2); transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.25); color: var(--white);
+      padding: 16px 36px; border-radius: 4px;
+      font-weight: 700; font-size: 0.88rem; letter-spacing: 0.5px;
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* right side — full bleed image */
+    .hero-right {
+      position: relative; overflow: hidden;
+    }
+    .hero-right img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-right::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--navy) 0%, transparent 30%),
+                  linear-gradient(to top, var(--navy) 0%, transparent 25%);
+    }
+    /* floating price tag */
+    .hero-tag {
+      position: absolute; bottom: 48px; left: 40px; z-index: 10;
+      background: var(--gold); color: var(--navy);
+      padding: 10px 20px; border-radius: 4px;
+      font-weight: 900; font-size: 0.9rem;
+    }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+      z-index: 10;
+    }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollpulse 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollpulse { 0%,100%{opacity:0.3;transform:scaleY(0.6)} 50%{opacity:1;transform:scaleY(1)} }
+
+    /* ── EDITORIAL ROWS ── */
+    /* alternating: image left / text right, then text left / image right */
+    .editorial { padding: 0 0 0; }
+
+    .ed-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 520px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .ed-row.reverse { direction: rtl; }
+    .ed-row.reverse > * { direction: ltr; }
+
+    .ed-cover {
+      position: relative; overflow: hidden;
+      background: var(--navy2);
+    }
+    .ed-cover img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .ed-row:hover .ed-cover img { transform: scale(1.03); }
+    .ed-cover-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,15,24,0.3), transparent);
+    }
+
+    .ed-body {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 60px 7%;
+      background: var(--navy);
+    }
+    .ed-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; font-weight: 700; line-height: 1;
+      color: rgba(212,175,55,0.12);
+      margin-bottom: -20px;
+    }
+    .ed-flag { font-size: 1.5rem; margin-bottom: 12px; }
+    .ed-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      line-height: 1.2; margin-bottom: 14px;
+    }
+    .ed-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 28px; max-width: 380px; }
+    .ed-meta { font-size: 0.75rem; color: var(--muted); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; }
+    .ed-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid var(--gold); color: var(--gold);
+      padding-bottom: 4px; font-weight: 700; font-size: 0.88rem;
+      transition: gap 0.2s;
+      align-self: flex-start;
+    }
+    .ed-btn:hover { gap: 14px; }
+    .ed-btn::after { content: '→'; }
+
+    /* ── ALL BOOKS GRID ── */
+    .grid-section {
+      padding: 100px 7%;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .grid-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 48px; flex-wrap: wrap; gap: 16px;
+    }
+    .grid-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+    .grid-header a {
+      color: var(--gold); font-size: 0.85rem; font-weight: 700;
+      border-bottom: 1px solid rgba(212,175,55,0.4);
+      padding-bottom: 2px;
+    }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+    .mini-card {
+      position: relative; overflow: hidden; border-radius: 4px;
+      aspect-ratio: 1/1;
+      cursor: pointer;
+    }
+    .mini-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .mini-card:hover img { transform: scale(1.06); }
+    .mini-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,15,24,0.95) 0%, rgba(8,15,24,0.1) 60%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 14px; opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .mini-card:hover .mini-overlay { opacity: 1; }
+    .mini-title { font-size: 0.78rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .mini-btn {
+      display: block; text-align: center;
+      background: var(--gold); color: var(--navy);
+      padding: 7px; border-radius: 4px;
+      font-size: 0.72rem; font-weight: 700;
+    }
+    .mini-btn:hover { background: var(--gold2); }
+
+    /* ── ABOUT / CLOSING ── */
+    .closing {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .closing-left {
+      background: var(--gold);
+      padding: 100px 7%;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .closing-left h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--navy); line-height: 1.1; margin-bottom: 24px;
+    }
+    .closing-left p { color: rgba(8,15,24,0.7); font-size: 0.95rem; line-height: 1.7; margin-bottom: 32px; }
+    .closing-btn {
+      display: inline-block;
+      background: var(--navy); color: var(--gold);
+      padding: 16px 36px; border-radius: 4px;
+      font-weight: 900; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.5px;
+      align-self: flex-start; transition: opacity 0.2s;
+    }
+    .closing-btn:hover { opacity: 0.85; }
+    .closing-right {
+      background: var(--navy2);
+      padding: 100px 7%;
+      display: flex; flex-direction: column; justify-content: center; gap: 24px;
+    }
+    .closing-right h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold);
+    }
+    .closing-right p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+    .social-row { display: flex; flex-direction: column; gap: 10px; }
+    .social-item {
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding-bottom: 10px; font-size: 0.88rem; font-weight: 700;
+      transition: color 0.2s;
+    }
+    .social-item:hover { color: var(--gold); }
+    .social-item span { opacity: 0.5; font-size: 0.75rem; margin-left: auto; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 28px 7%; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+      font-size: 0.78rem; color: var(--muted);
+    }
+    footer a { color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding-top: 100px; }
+      .ed-row, .ed-row.reverse { grid-template-columns: 1fr; }
+      .ed-cover { min-height: 300px; }
+      .closing { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="logo">Supernova <span>Artworks</span></div>
+  <div class="nav-links">
+    <a href="#books">Books</a>
+    <a href="#all">All Titles</a>
+    <a href="#about">About</a>
+  </div>
+  <a class="nav-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Shop Amazon</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-kicker">Children's Books · Cultural Celebrations</div>
+    <h1>Colors<br>That Tell<br><em>Stories</em></h1>
+    <p>Bold lines, big spaces, zero gray — every book is a journey through a real festival, a real culture, a real celebration. For kids ages 4–10.</p>
+    <div class="hero-actions">
+      <a class="btn-solid" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Shop All Books</a>
+      <a class="btn-outline" href="https://www.instagram.com/supernova.artworks" target="_blank">Follow Us</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="images/songkran.png" alt="Songkran Coloring Book" />
+    <div class="hero-tag">From $9.99 · Available on Amazon</div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- EDITORIAL BOOK ROWS -->
+<section class="editorial" id="books">
+
+  <div class="ed-row">
+    <div class="ed-cover">
+      <img src="images/vishu.png" alt="Vishu" />
+      <div class="ed-cover-overlay"></div>
+    </div>
+    <div class="ed-body">
+      <div class="ed-number">01</div>
+      <div class="ed-flag">🇮🇳</div>
+      <h3>Golden Sunrise in God's Own Country</h3>
+      <div class="ed-meta">Kerala · Vishu Festival · Ages 4–10 · 18 pages</div>
+      <p>Journey to Kerala for the most golden morning of the year — Vishu Kani, the sadya feast, elephant processions, and konna flowers in full bloom.</p>
+      <a class="ed-btn" href="https://www.amazon.com/dp/B0GRSZH836" target="_blank">Buy on Amazon</a>
+    </div>
+  </div>
+
+  <div class="ed-row reverse">
+    <div class="ed-cover">
+      <img src="images/semana-santa.png" alt="Semana Santa" />
+      <div class="ed-cover-overlay"></div>
+    </div>
+    <div class="ed-body">
+      <div class="ed-number">02</div>
+      <div class="ed-flag">🇬🇹</div>
+      <h3>Semana Santa — A Holy Week Coloring Adventure</h3>
+      <div class="ed-meta">Guatemala · Holy Week · Ages 4–10 · EN & ES</div>
+      <p>Alfombras, candlelit processions, marimba music — Latin America's most visually spectacular festival, now in a bilingual coloring book.</p>
+      <a class="ed-btn" href="https://www.amazon.com/dp/B0GRPWP411" target="_blank">Buy on Amazon</a>
+    </div>
+  </div>
+
+  <div class="ed-row">
+    <div class="ed-cover">
+      <img src="images/songkran.png" alt="Songkran" />
+      <div class="ed-cover-overlay"></div>
+    </div>
+    <div class="ed-body">
+      <div class="ed-number">03</div>
+      <div class="ed-flag">🇹🇭</div>
+      <h3>Happy Songkran! Thailand's Big Water Festival</h3>
+      <div class="ed-meta">Thailand · Songkran · Ages 4–10 · 16 pages</div>
+      <p>Water fights, elephants, jasmine garlands, sand pagodas — the world's most joyful new year festival brought to life for little hands.</p>
+      <a class="ed-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+    </div>
+  </div>
+
+  <div class="ed-row reverse">
+    <div class="ed-cover">
+      <img src="images/vaisakhi.png" alt="Vaisakhi" />
+      <div class="ed-cover-overlay"></div>
+    </div>
+    <div class="ed-body">
+      <div class="ed-number">04</div>
+      <div class="ed-flag">🇮🇳</div>
+      <h3>Happy Vaisakhi! Golden Fields & Brave Hearts</h3>
+      <div class="ed-meta">Punjab · Vaisakhi · Ages 4–10 · 16 pages</div>
+      <p>Bhangra dancers, the Golden Temple, langar, dhol drums and a wheat harvest in full swing — Punjab's most joyful celebration in bold black and white.</p>
+      <a class="ed-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+    </div>
+  </div>
+
+  <div class="ed-row">
+    <div class="ed-cover">
+      <img src="images/fasika.png" alt="Fasika" />
+      <div class="ed-cover-overlay"></div>
+    </div>
+    <div class="ed-body">
+      <div class="ed-number">05</div>
+      <div class="ed-flag">🇪🇹</div>
+      <h3>Happy Fasika! Ethiopia's Joyful Easter</h3>
+      <div class="ed-meta">Ethiopia · Orthodox Easter · Ages 4–10 · 16 pages</div>
+      <p>Ethiopian crosses, white netela robes, the coffee ceremony, injera feasts, Lalibela's rock-hewn churches — a completely unique Easter tradition.</p>
+      <a class="ed-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+    </div>
+  </div>
+
+  <div class="ed-row reverse">
+    <div class="ed-cover">
+      <img src="images/vesak.png" alt="Vesak" />
+      <div class="ed-cover-overlay"></div>
+    </div>
+    <div class="ed-body">
+      <div class="ed-number">06</div>
+      <div class="ed-flag">🌏</div>
+      <h3>Happy Vesak! A Buddha Day Coloring Book</h3>
+      <div class="ed-meta">Buddhist World · Vesak · Ages 4–10 · 16 pages</div>
+      <p>Lanterns, the Bodhi tree, butter lamps, elephant parades and sky lanterns — celebrating the world's most peaceful festival with little ones.</p>
+      <a class="ed-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ALL BOOKS GRID -->
+<section class="grid-section" id="all">
+  <div class="grid-header">
+    <h2>All Titles</h2>
+    <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">View on Amazon →</a>
+  </div>
+  <div class="mini-grid">
+
+    <div class="mini-card">
+      <img src="images/easter.jpg" alt="Easter Kerala" />
+      <div class="mini-overlay">
+        <div class="mini-title">Hop Hop Hallelujah! Easter in God's Own Country</div>
+        <a class="mini-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <img src="images/khmer.png" alt="Khmer New Year" />
+      <div class="mini-overlay">
+        <div class="mini-title">Happy Chaul Chnam Thmey! Khmer New Year</div>
+        <a class="mini-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <img src="images/avurudu.jpg" alt="Avurudu" />
+      <div class="mini-overlay">
+        <div class="mini-title">Happy Avurudu! Sinhala & Tamil New Year</div>
+        <a class="mini-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <img src="images/semana-santa-story.png" alt="Felices Pascuas Story" />
+      <div class="mini-overlay">
+        <div class="mini-title">¡Felices Pascuas! Sofia's Semana Santa Story</div>
+        <a class="mini-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <img src="images/vesak-story.png" alt="Vesak Story" />
+      <div class="mini-overlay">
+        <div class="mini-title">The Vesak Lantern — A Buddha Day Story</div>
+        <a class="mini-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <img src="images/hugs-hops.png" alt="Hugs Hops" />
+      <div class="mini-overlay">
+        <div class="mini-title">Hugs, Hops & Happy Families</div>
+        <a class="mini-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <img src="images/terry.png" alt="Terry Tortoise" />
+      <div class="mini-overlay">
+        <div class="mini-title">Terry the Tortoise's Coral Adventure</div>
+        <a class="mini-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <img src="images/india.png" alt="Great India Adventure" />
+      <div class="mini-overlay">
+        <div class="mini-title">The Great India Adventure</div>
+        <a class="mini-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLOSING / ABOUT -->
+<section class="closing" id="about">
+  <div class="closing-left">
+    <h2>Every child deserves to see their culture in a book.</h2>
+    <p>Supernova Artworks creates coloring and story books that celebrate the rich tapestry of world cultures. From Kerala to Guatemala, from Thailand to Ethiopia — bold lines, big spaces, and a little bit of wonder on every page.</p>
+    <a class="closing-btn" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Browse All 20+ Books</a>
+  </div>
+  <div class="closing-right">
+    <h3>Follow Supernova Artworks</h3>
+    <p>New books, behind-the-scenes, and coloring challenges every week.</p>
+    <div class="social-row">
+      <a class="social-item" href="https://www.instagram.com/supernova.artworks" target="_blank">
+        📸 Instagram <span>@supernova.artworks →</span>
+      </a>
+      <a class="social-item" href="https://www.youtube.com/@supernovaartworks" target="_blank">
+        ▶️ YouTube <span>Supernova Artworks →</span>
+      </a>
+      <a class="social-item" href="https://www.threads.net/@supernova.artworks" target="_blank">
+        🧵 Threads <span>@supernova.artworks →</span>
+      </a>
+      <a class="social-item" href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">
+        🛍 Amazon Author Page <span>View all books →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Supernova Artworks · By Novjean Kannathara</span>
+  <span>All books on <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Amazon</a></span>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+</script>
+
+</body>
+</html>
