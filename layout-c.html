@@ -450,6 +450,36 @@
     .footer-links a:hover { color: var(--gold); }
     .footer-copy { text-align: right; font-size: 0.72rem; color: rgba(255,255,255,0.25); }
 
+
+    /* ── FESTIVAL BADGES ── */
+    .badge-now {
+      position: absolute; top: 10px; right: 10px;
+      background: #1B7A3E; color: #fff;
+      font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 700; padding: 4px 10px; border-radius: 2px;
+      white-space: nowrap;
+    }
+    .badge-soon {
+      position: absolute; top: 10px; right: 10px;
+      background: var(--gold); color: #fff;
+      font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 700; padding: 4px 10px; border-radius: 2px;
+      white-space: nowrap;
+    }
+    .badge-new {
+      position: absolute; top: 10px; left: 10px;
+      background: var(--ink); color: #fff;
+      font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 700; padding: 4px 10px; border-radius: 2px;
+    }
+    .featured-festival-badge {
+      display: inline-block;
+      background: #1B7A3E; color: #fff;
+      font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 700; padding: 5px 14px; border-radius: 2px;
+      margin-bottom: 14px;
+    }
+    .featured-festival-badge.soon { background: var(--gold); }
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; padding: 110px 5% 60px; }
@@ -500,15 +530,15 @@
     </div>
     <div class="hero-visual">
       <div class="hero-card tall">
-        <img src="images/songkran.png" alt="Songkran" />
+        <picture><source srcset="images/songkran.avif" type="image/avif"><img src="images/songkran.png" alt="Songkran" /></picture>
         <div class="hero-card-label">Songkran Festival</div>
       </div>
       <div class="hero-card">
-        <img src="images/vishu.png" alt="Vishu" />
+        <picture><source srcset="images/vishu.avif" type="image/avif"><img src="images/vishu.png" alt="Vishu" /></picture>
         <div class="hero-card-label">Vishu</div>
       </div>
       <div class="hero-card">
-        <img src="images/vaisakhi.png" alt="Vaisakhi" />
+        <picture><source srcset="images/vaisakhi.avif" type="image/avif"><img src="images/vaisakhi.png" alt="Vaisakhi" /></picture>
         <div class="hero-card-label">Vaisakhi</div>
       </div>
     </div>
@@ -539,10 +569,10 @@
   </div>
 
   <div class="book-grid">
-    <div class="book-cell">
+    <div class="book-cell" data-book="songkran">
       <div class="book-cell-img">
-        <img src="images/songkran.png" alt="Songkran" />
-        <span class="book-cell-badge">Best Seller</span>
+        <picture><source srcset="images/songkran.avif" type="image/avif"><img src="images/songkran.png" alt="Songkran" /></picture>
+        
       </div>
       <div class="book-cell-flag">🇹🇭</div>
       <div class="book-cell-title">Songkran Festival Coloring Book</div>
@@ -552,9 +582,9 @@
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
       </a>
     </div>
-    <div class="book-cell">
+    <div class="book-cell" data-book="vishu">
       <div class="book-cell-img">
-        <img src="images/vishu.png" alt="Vishu" />
+        <picture><source srcset="images/vishu.avif" type="image/avif"><img src="images/vishu.png" alt="Vishu" /></picture>
       </div>
       <div class="book-cell-flag">🇮🇳</div>
       <div class="book-cell-title">Vishu Coloring Book</div>
@@ -564,9 +594,9 @@
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
       </a>
     </div>
-    <div class="book-cell">
+    <div class="book-cell" data-book="vaisakhi">
       <div class="book-cell-img">
-        <img src="images/vaisakhi.png" alt="Vaisakhi" />
+        <picture><source srcset="images/vaisakhi.avif" type="image/avif"><img src="images/vaisakhi.png" alt="Vaisakhi" /></picture>
       </div>
       <div class="book-cell-flag">🇮🇳</div>
       <div class="book-cell-title">Vaisakhi Coloring Book</div>
@@ -576,9 +606,9 @@
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
       </a>
     </div>
-    <div class="book-cell">
+    <div class="book-cell" data-book="semana-santa">
       <div class="book-cell-img">
-        <img src="images/semana-santa.png" alt="Semana Santa" />
+        <picture><source srcset="images/semana-santa.avif" type="image/avif"><img src="images/semana-santa.png" alt="Semana Santa" /></picture>
       </div>
       <div class="book-cell-flag">🇪🇸</div>
       <div class="book-cell-title">Semana Santa Coloring Book</div>
@@ -588,9 +618,9 @@
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
       </a>
     </div>
-    <div class="book-cell">
+    <div class="book-cell" data-book="fasika">
       <div class="book-cell-img">
-        <img src="images/fasika.png" alt="Fasika" />
+        <picture><source srcset="images/fasika.avif" type="image/avif"><img src="images/fasika.png" alt="Fasika" /></picture>
       </div>
       <div class="book-cell-flag">🇪🇹</div>
       <div class="book-cell-title">Fasika Ethiopian Easter</div>
@@ -600,9 +630,9 @@
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
       </a>
     </div>
-    <div class="book-cell">
+    <div class="book-cell" data-book="vesak">
       <div class="book-cell-img">
-        <img src="images/vesak.png" alt="Vesak" />
+        <picture><source srcset="images/vesak.avif" type="image/avif"><img src="images/vesak.png" alt="Vesak" /></picture>
       </div>
       <div class="book-cell-flag">🪷</div>
       <div class="book-cell-title">Vesak Festival Coloring Book</div>
@@ -612,9 +642,9 @@
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
       </a>
     </div>
-    <div class="book-cell">
+    <div class="book-cell" data-book="easter">
       <div class="book-cell-img">
-        <img src="images/easter.jpg" alt="Easter" />
+        <picture><source srcset="images/easter.avif" type="image/avif"><img src="images/easter.jpg" alt="Easter" /></picture>
       </div>
       <div class="book-cell-flag">🐣</div>
       <div class="book-cell-title">Easter Coloring Book</div>
@@ -624,9 +654,9 @@
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
       </a>
     </div>
-    <div class="book-cell">
+    <div class="book-cell" data-book="khmer">
       <div class="book-cell-img">
-        <img src="images/khmer.png" alt="Khmer New Year" />
+        <picture><source srcset="images/khmer.avif" type="image/avif"><img src="images/khmer.png" alt="Khmer New Year" /></picture>
       </div>
       <div class="book-cell-flag">🇰🇭</div>
       <div class="book-cell-title">Khmer New Year Coloring Book</div>
@@ -639,9 +669,9 @@
   </div>
 
   <!-- FEATURED SPREAD — Avurudu -->
-  <div class="featured">
+  <div class="featured" data-book="avurudu">
     <div class="featured-img">
-      <img src="images/avurudu.jpg" alt="Sinhala New Year" />
+      <picture><source srcset="images/avurudu.avif" type="image/avif"><img src="images/avurudu.jpg" alt="Sinhala New Year" /></picture>
       <div class="featured-img-overlay"></div>
     </div>
     <div class="featured-body">
@@ -663,7 +693,7 @@
     <div class="story-cards">
       <div class="story-card">
         <div class="story-card-img">
-          <img src="images/semana-santa-story.png" alt="Semana Santa Story Book" />
+          <picture><source srcset="images/semana-santa-story.avif" type="image/avif"><img src="images/semana-santa-story.png" alt="Semana Santa Story Book" /></picture>
         </div>
         <div class="story-card-body">
           <div class="story-card-kicker">🇪🇸 Story Book</div>
@@ -677,7 +707,7 @@
       </div>
       <div class="story-card">
         <div class="story-card-img">
-          <img src="images/vesak-story.png" alt="Vesak Story Book" />
+          <picture><source srcset="images/vesak-story.avif" type="image/avif"><img src="images/vesak-story.png" alt="Vesak Story Book" /></picture>
         </div>
         <div class="story-card-body">
           <div class="story-card-kicker">🪷 Story Book</div>
@@ -697,42 +727,42 @@
     <h3 class="mini-grid-head">More books in the collection</h3>
     <div class="mini-grid">
       <div class="mini-cell">
-        <img src="images/india.png" alt="India Mandalas" />
+        <picture><source srcset="images/india.avif" type="image/avif"><img src="images/india.png" alt="India Mandalas" /></picture>
         <div class="mini-overlay">
           <span>India Mandalas</span>
           <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
         </div>
       </div>
       <div class="mini-cell">
-        <img src="images/terry.png" alt="Terry the Tortoise" />
+        <picture><source srcset="images/terry.avif" type="image/avif"><img src="images/terry.png" alt="Terry the Tortoise" /></picture>
         <div class="mini-overlay">
           <span>Terry the Tortoise</span>
           <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
         </div>
       </div>
       <div class="mini-cell">
-        <img src="images/hugs-hops.png" alt="Hugs Hops Happy Families" />
+        <picture><source srcset="images/hugs-hops.avif" type="image/avif"><img src="images/hugs-hops.png" alt="Hugs Hops Happy Families" /></picture>
         <div class="mini-overlay">
           <span>Hugs, Hops &amp; Happy Families</span>
           <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
         </div>
       </div>
       <div class="mini-cell">
-        <img src="images/avurudu.jpg" alt="Avurudu" />
+        <picture><source srcset="images/avurudu.avif" type="image/avif"><img src="images/avurudu.jpg" alt="Avurudu" /></picture>
         <div class="mini-overlay">
           <span>Sinhala New Year</span>
           <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
         </div>
       </div>
       <div class="mini-cell">
-        <img src="images/khmer.png" alt="Khmer" />
+        <picture><source srcset="images/khmer.avif" type="image/avif"><img src="images/khmer.png" alt="Khmer" /></picture>
         <div class="mini-overlay">
           <span>Khmer New Year</span>
           <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
         </div>
       </div>
       <div class="mini-cell">
-        <img src="images/easter.jpg" alt="Easter" />
+        <picture><source srcset="images/easter.avif" type="image/avif"><img src="images/easter.jpg" alt="Easter" /></picture>
         <div class="mini-overlay">
           <span>Easter</span>
           <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank">Buy →</a>
@@ -792,10 +822,101 @@
   </footer>
 
   <script>
+    // ── NAV SCROLL ──
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     });
+
+    // ── FESTIVAL DATE ENGINE ──
+    // month is 1-indexed. window = days either side still "in season".
+    // For variable festivals (Easter, Vesak, Fasika) we store approximate annual dates.
+    const FESTIVALS = {
+      'songkran':     [{ month: 4, day: 13, window: 21 }],
+      'vishu':        [{ month: 4, day: 14, window: 14 }],
+      'vaisakhi':     [{ month: 4, day: 13, window: 14 }],
+      'semana-santa': [{ month: 3, day: 29, window: 21 }, { month: 4, day: 5, window: 21 }], // Holy Week + Easter
+      'fasika':       [{ month: 4, day: 19, window: 21 }], // Ethiopian Easter approx
+      'vesak':        [{ month: 5, day: 10, window: 21 }], // Full moon in May
+      'easter':       [{ month: 4, day: 5,  window: 14 }], // Easter Sunday
+      'khmer':        [{ month: 4, day: 13, window: 14 }],
+      'avurudu':      [{ month: 4, day: 13, window: 14 }],
+    };
+
+    // Books published in last 90 days get a "New" badge (right-hand corner)
+    const NEW_BOOKS = ['avurudu', 'khmer'];
+
+    function dayOfYear(d) {
+      const start = new Date(d.getFullYear(), 0, 0);
+      const diff = d - start;
+      return Math.floor(diff / 86400000);
+    }
+
+    function daysUntilFestival(month, day) {
+      const now = new Date();
+      const thisYear = new Date(now.getFullYear(), month - 1, day);
+      const nextYear = new Date(now.getFullYear() + 1, month - 1, day);
+      const diffThis = Math.round((thisYear - now) / 86400000);
+      const diffNext = Math.round((nextYear - now) / 86400000);
+      // Use whichever occurrence is closest
+      if (Math.abs(diffThis) <= Math.abs(diffNext)) return diffThis;
+      return diffNext;
+    }
+
+    function getFestivalStatus(bookKey) {
+      const dates = FESTIVALS[bookKey];
+      if (!dates) return null;
+      let closest = null;
+      for (const d of dates) {
+        const diff = daysUntilFestival(d.month, d.day);
+        if (closest === null || Math.abs(diff) < Math.abs(closest.diff)) {
+          closest = { diff, window: d.window };
+        }
+      }
+      if (!closest) return null;
+      const { diff, window: win } = closest;
+      if (diff >= -win && diff <= win) return 'now';
+      if (diff > win && diff <= 60) return 'soon';
+      return null;
+    }
+
+    // Apply badges to book-cell grid
+    document.querySelectorAll('.book-cell[data-book]').forEach(cell => {
+      const key = cell.dataset.book;
+      const imgDiv = cell.querySelector('.book-cell-img');
+      const status = getFestivalStatus(key);
+      if (status === 'now') {
+        const b = document.createElement('span');
+        b.className = 'badge-now';
+        b.textContent = 'Celebrate Now!';
+        imgDiv.appendChild(b);
+      } else if (status === 'soon') {
+        const b = document.createElement('span');
+        b.className = 'badge-soon';
+        b.textContent = 'Coming Soon';
+        imgDiv.appendChild(b);
+      }
+      if (NEW_BOOKS.includes(key)) {
+        const b = document.createElement('span');
+        b.className = 'badge-new';
+        b.textContent = 'New';
+        imgDiv.appendChild(b);
+      }
+    });
+
+    // Apply badge to featured spread
+    const featured = document.querySelector('.featured[data-book]');
+    if (featured) {
+      const key = featured.dataset.book;
+      const kicker = featured.querySelector('.featured-kicker');
+      const status = getFestivalStatus(key);
+      if (kicker && status) {
+        const b = document.createElement('span');
+        b.className = 'featured-festival-badge' + (status === 'soon' ? ' soon' : '');
+        b.textContent = status === 'now' ? '🎉 Celebrate Now!' : '📅 Coming Soon';
+        kicker.parentNode.insertBefore(b, kicker);
+      }
+    }
   </script>
 </body>
 </html>
