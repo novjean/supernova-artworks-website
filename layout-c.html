@@ -667,23 +667,50 @@
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
       </a>
     </div>
+    <div class="book-cell" data-book="avurudu">
+      <div class="book-cell-img">
+        <picture><source srcset="images/avurudu.avif" type="image/avif"><img src="images/avurudu.jpg" alt="Sinhala New Year" /></picture>
+      </div>
+      <div class="book-cell-flag">🇱🇰</div>
+      <div class="book-cell-title">Sinhala &amp; Tamil New Year Coloring Book</div>
+      <div class="book-cell-meta">Sri Lanka · 30 Pages · $9.99</div>
+      <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <div class="book-cell" data-book="akshaya-tritiya">
+      <div class="book-cell-img">
+        <picture><source srcset="images/akshaya-tritiya.avif" type="image/avif"><img src="images/akshaya-tritiya.jpg" alt="Shubh Akshaya Tritiya" /></picture>
+      </div>
+      <div class="book-cell-flag">🇮🇳</div>
+      <div class="book-cell-title">Color with Ananya: Shubh Akshaya Tritiya!</div>
+      <div class="book-cell-meta">India · 38 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0GXR1PGR9" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
   </div>
 
-  <!-- FEATURED SPREAD — Avurudu -->
-  <div class="featured" data-book="avurudu">
+  <!-- FEATURED SPREAD — Akshaya Tritiya -->
+  <div class="featured" data-book="akshaya-tritiya">
     <div class="featured-img">
-      <picture><source srcset="images/avurudu.avif" type="image/avif"><img src="images/avurudu.jpg" alt="Sinhala New Year" /></picture>
+      <picture><source srcset="images/akshaya-tritiya.avif" type="image/avif"><img src="images/akshaya-tritiya.jpg" alt="Shubh Akshaya Tritiya" /></picture>
       <div class="featured-img-overlay"></div>
     </div>
     <div class="featured-body">
-      <div class="featured-num">09</div>
-      <div class="featured-kicker">🇱🇰 Sri Lanka · New This Season</div>
-      <h2 class="featured-title">Sinhala &amp; Tamil New Year Coloring Book</h2>
+      <div class="featured-num">10</div>
+      <div class="featured-kicker">🇮🇳 India · Bilingual English &amp; Hindi · New Release</div>
+      <h2 class="featured-title">Color with Ananya: Shubh Akshaya Tritiya!</h2>
       <p class="featured-desc">
-        Celebrate Avurudu with 30 beautifully illustrated pages capturing the lanterns, games, traditional sweets and ceremonies of Sri Lanka's most joyful festival.
+        Celebrate the golden festival of Akshaya Tritiya through 16 stunning spreads — learn 18 Hindi words, color beautiful scenes, and explore the joy of this auspicious occasion with Ananya.
       </p>
-      <div class="featured-price">From <strong>$9.99</strong></div>
-      <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="btn-primary" style="width: fit-content; margin-top: 8px;">Buy on Amazon</a>
+      <div class="featured-price">Paperback <strong>$9.99</strong> · Kindle <strong>$5.99</strong></div>
+      <div style="display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap;">
+        <a href="https://www.amazon.com/dp/B0GXR1PGR9" target="_blank" class="btn-primary" style="width: fit-content;">Buy Paperback</a>
+        <a href="https://www.amazon.com/dp/B0GX376H42" target="_blank" class="btn-ghost" style="width: fit-content;">Read on Kindle</a>
+      </div>
     </div>
   </div>
 
@@ -840,12 +867,13 @@
       'fasika':       [{ month: 4, day: 19, window: 21 }], // Ethiopian Easter approx
       'vesak':        [{ month: 5, day: 10, window: 21 }], // Full moon in May
       'easter':       [{ month: 4, day: 5,  window: 14 }], // Easter Sunday
-      'khmer':        [{ month: 4, day: 13, window: 14 }],
-      'avurudu':      [{ month: 4, day: 13, window: 14 }],
+      'khmer':           [{ month: 4, day: 13, window: 14 }],
+      'avurudu':         [{ month: 4, day: 13, window: 14 }],
+      'akshaya-tritiya': [{ month: 4, day: 20, window: 21 }],
     };
 
     // Books published in last 90 days get a "New" badge (right-hand corner)
-    const NEW_BOOKS = ['avurudu', 'khmer'];
+    const NEW_BOOKS = ['akshaya-tritiya', 'avurudu', 'khmer'];
 
     function dayOfYear(d) {
       const start = new Date(d.getFullYear(), 0, 0);
@@ -918,6 +946,40 @@
         kicker.parentNode.insertBefore(b, kicker);
       }
     }
+
+    // ── GEO-BASED AMAZON MARKETPLACE ROUTING ──
+    (function() {
+      const DOMAIN_MAP = {
+        GB: 'amazon.co.uk',
+        DE: 'amazon.de', AT: 'amazon.de', CH: 'amazon.de',
+        FR: 'amazon.fr',
+        ES: 'amazon.es',
+        IT: 'amazon.it',
+        CA: 'amazon.ca',
+        AU: 'amazon.com.au',
+        JP: 'amazon.co.jp',
+        IN: 'amazon.in',
+        MX: 'amazon.com.mx',
+        BR: 'amazon.com.br',
+        SG: 'amazon.sg',
+        NL: 'amazon.nl',
+        SE: 'amazon.se',
+        PL: 'amazon.pl',
+        TR: 'amazon.com.tr',
+        AE: 'amazon.ae',
+        SA: 'amazon.sa',
+      };
+      fetch('https://ipapi.co/json/')
+        .then(r => r.json())
+        .then(data => {
+          const domain = DOMAIN_MAP[data.country_code];
+          if (!domain) return;
+          document.querySelectorAll('a[href*="amazon.com"]').forEach(a => {
+            a.href = a.href.replace('amazon.com', domain);
+          });
+        })
+        .catch(() => {});
+    })();
   </script>
 </body>
 </html>
