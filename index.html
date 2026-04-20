@@ -432,6 +432,46 @@
     .nl-submit:hover { background: var(--gold2); }
     .nl-note { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
 
+    /* ── SUGGEST A BOOK ── */
+    .suggest-section {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      padding: 80px 6%;
+      background: linear-gradient(135deg, #FFF8E7 0%, #FEF3D0 100%);
+      border-top: 1px solid rgba(200,153,42,0.15);
+      border-bottom: 1px solid rgba(200,153,42,0.15);
+    }
+    .suggest-icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .suggest-label {
+      font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 14px;
+    }
+    .suggest-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700; line-height: 1.15; margin-bottom: 18px;
+    }
+    .suggest-title em { font-style: italic; color: var(--gold); }
+    .suggest-desc { font-size: 1rem; line-height: 1.75; color: #555; }
+    .suggest-form { display: flex; flex-direction: column; gap: 14px; }
+    .suggest-input, .suggest-email {
+      width: 100%; padding: 14px 18px;
+      border: 1.5px solid rgba(0,0,0,0.12); border-radius: 4px;
+      font-family: 'Nunito', sans-serif; font-size: 0.95rem;
+      background: #fff; color: var(--ink);
+      transition: border-color 0.2s; outline: none;
+    }
+    .suggest-input:focus, .suggest-email:focus { border-color: var(--gold); }
+    .suggest-submit {
+      background: var(--ink); color: var(--cream); border: none; cursor: pointer;
+      padding: 15px 24px; border-radius: 3px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .suggest-submit:hover { background: var(--gold); }
+    .suggest-note { font-size: 0.75rem; color: #999; text-align: center; }
+
     /* ── FOOTER ── */
     footer {
       background: var(--ink); color: var(--cream);
@@ -503,6 +543,7 @@
       .philosophy { grid-template-columns: 1fr; gap: 24px; }
       .phil-label { writing-mode: horizontal-tb; }
       .mini-grid { grid-template-columns: repeat(3, 1fr); }
+      .suggest-section { grid-template-columns: 1fr; gap: 36px; }
       .newsletter { grid-template-columns: 1fr; }
       footer { grid-template-columns: 1fr; text-align: center; }
       .footer-copy { text-align: center; }
@@ -844,6 +885,26 @@
     </div>
   </div>
 
+  <!-- SUGGEST A BOOK -->
+  <div class="suggest-section">
+    <div>
+      <div class="suggest-icon">✨</div>
+      <div class="suggest-label">Help Us Write the Next Book</div>
+      <h2 class="suggest-title">Don't see your festival? <em>Tell us!</em></h2>
+      <p class="suggest-desc">
+        Every culture deserves a book. Tell us what festival, tradition, or language you'd love your child to explore — and we'll do our best to make that book a reality and let you know when it's ready.
+      </p>
+    </div>
+    <form class="suggest-form" action="https://formsubmit.co/supernovaartworks2025@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Book Suggestion — Supernova Artworks" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="suggestion" class="suggest-input" placeholder="e.g. Diwali, Hanukkah, Lunar New Year, Eid al-Adha, Nowruz..." required />
+      <input type="email" name="email" class="suggest-email" placeholder="Your email — we'll notify you when it's ready!" required />
+      <button type="submit" class="suggest-submit">Send My Suggestion ✨</button>
+      <p class="suggest-note">We read every suggestion. Yours could become the next book! 🎨</p>
+    </form>
+  </div>
+
   <!-- NEWSLETTER -->
   <div class="newsletter">
     <div>
@@ -851,11 +912,13 @@
       <h2 class="nl-title">New book <em>every</em> season</h2>
       <p class="nl-sub">Get notified when we release a new coloring book — a new festival, a new country, a new adventure for your child.</p>
     </div>
-    <div class="nl-form">
-      <input type="email" class="nl-input" placeholder="Your email address" />
-      <button class="nl-submit">Notify Me</button>
+    <form class="nl-form" action="https://formsubmit.co/supernovaartworks2025@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Newsletter Signup — Supernova Artworks" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="email" name="email" class="nl-input" placeholder="Your email address" required />
+      <button type="submit" class="nl-submit">Notify Me</button>
       <p class="nl-note">No spam. Just new books. Unsubscribe anytime.</p>
-    </div>
+    </form>
   </div>
 
   <!-- FOOTER -->
