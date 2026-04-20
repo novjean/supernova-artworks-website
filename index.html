@@ -545,8 +545,8 @@
         <div class="hero-card-label">Vishu</div>
       </div>
       <div class="hero-card">
-        <picture><source srcset="images/vaisakhi.avif" type="image/avif"><img src="images/vaisakhi.png" alt="Vaisakhi" /></picture>
-        <div class="hero-card-label">Vaisakhi</div>
+        <picture><source srcset="images/akshaya-tritiya.avif" type="image/avif"><img src="images/akshaya-tritiya.jpg" alt="Akshaya Tritiya" /></picture>
+        <div class="hero-card-label">Akshaya Tritiya</div>
       </div>
     </div>
   </section>
@@ -748,6 +748,20 @@
           <div class="story-card-title">The Light of Vesak</div>
           <p class="story-card-desc">A young monk learns the meaning of compassion through the lantern-lit celebrations of Vesak, the holiest day in the Buddhist calendar.</p>
           <a href="https://www.amazon.com/dp/B0GVH58YQC" target="_blank" class="story-card-buy">
+            Read Now
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-card-img">
+          <picture><source srcset="images/akshaya-tritiya-kindle.avif" type="image/avif"><img src="images/akshaya-tritiya-kindle.jpg" alt="Color with Ananya Akshaya Tritiya" /></picture>
+        </div>
+        <div class="story-card-body">
+          <div class="story-card-kicker">🇮🇳 Bilingual Children's Book</div>
+          <div class="story-card-title">Color with Ananya: Shubh Akshaya Tritiya!</div>
+          <p class="story-card-desc">Ananya celebrates the golden festival of Akshaya Tritiya — explore 18 Hindi words through beautifully colored illustrations in this bilingual English &amp; Hindi children's book.</p>
+          <a href="https://www.amazon.com/dp/B0GX376H42" target="_blank" class="story-card-buy">
             Read Now
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
           </a>
@@ -955,6 +969,9 @@
 
     // ── GEO-BASED AMAZON MARKETPLACE ROUTING ──
     (function() {
+      const AUTHOR_PROFILE = 'https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR';
+      // Countries where KDP paperback is NOT sold (amazon.in doesn't carry KDP paperbacks)
+      const NO_PAPERBACK = new Set(['IN']);
       const DOMAIN_MAP = {
         GB: 'amazon.co.uk',
         DE: 'amazon.de', AT: 'amazon.de', CH: 'amazon.de',
@@ -964,7 +981,6 @@
         CA: 'amazon.ca',
         AU: 'amazon.com.au',
         JP: 'amazon.co.jp',
-        IN: 'amazon.in',
         MX: 'amazon.com.mx',
         BR: 'amazon.com.br',
         SG: 'amazon.sg',
@@ -978,7 +994,23 @@
       fetch('https://ipapi.co/json/')
         .then(r => r.json())
         .then(data => {
-          const domain = DOMAIN_MAP[data.country_code];
+          const cc = data.country_code;
+          if (NO_PAPERBACK.has(cc)) {
+            // Paperback buy buttons → author profile (KDP paperback not sold here)
+            document.querySelectorAll('.book-cell-buy, .btn-primary').forEach(a => {
+              if (a.getAttribute('href') && a.getAttribute('href').includes('/dp/')) {
+                a.href = AUTHOR_PROFILE;
+              }
+            });
+            // Kindle / story links → rewrite to amazon.in (Kindle works there)
+            document.querySelectorAll('.story-card-buy, .btn-ghost').forEach(a => {
+              if (a.href && a.href.includes('amazon.com/dp/')) {
+                a.href = a.href.replace('amazon.com', 'amazon.in');
+              }
+            });
+            return;
+          }
+          const domain = DOMAIN_MAP[cc];
           if (!domain) return;
           document.querySelectorAll('a[href*="amazon.com"]').forEach(a => {
             a.href = a.href.replace('amazon.com', domain);
