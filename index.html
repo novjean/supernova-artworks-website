@@ -1060,9 +1060,6 @@
 
     // ── GEO-BASED AMAZON MARKETPLACE ROUTING ──
     (function() {
-      const AUTHOR_PROFILE = 'https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR';
-      // Countries where KDP paperback is NOT sold (amazon.in doesn't carry KDP paperbacks)
-      const NO_PAPERBACK = new Set(['IN']);
       const DOMAIN_MAP = {
         GB: 'amazon.co.uk',
         DE: 'amazon.de', AT: 'amazon.de', CH: 'amazon.de',
@@ -1086,21 +1083,6 @@
         .then(r => r.json())
         .then(data => {
           const cc = data.country_code;
-          if (NO_PAPERBACK.has(cc)) {
-            // Paperback buy buttons → author profile (KDP paperback not sold here)
-            document.querySelectorAll('.book-cell-buy, .btn-primary').forEach(a => {
-              if (a.getAttribute('href') && a.getAttribute('href').includes('/dp/')) {
-                a.href = AUTHOR_PROFILE;
-              }
-            });
-            // Kindle / story links → rewrite to amazon.in (Kindle works there)
-            document.querySelectorAll('.story-card-buy, .btn-ghost').forEach(a => {
-              if (a.href && a.href.includes('amazon.com/dp/')) {
-                a.href = a.href.replace('amazon.com', 'amazon.in');
-              }
-            });
-            return;
-          }
           const domain = DOMAIN_MAP[cc];
           if (!domain) return;
           document.querySelectorAll('a[href*="amazon.com"]').forEach(a => {
