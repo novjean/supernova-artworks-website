@@ -792,6 +792,20 @@
     <div class="story-cards">
       <div class="story-card">
         <div class="story-card-img">
+          <picture><img src="images/gawai-kindle.jpg" alt="Kenyalang's Gawai Children's Book" /></picture>
+        </div>
+        <div class="story-card-body">
+          <div class="story-card-kicker">🇲🇾 Bilingual Children's Book</div>
+          <div class="story-card-title">Kenyalang's Gawai: Festival of the Hornbill</div>
+          <p class="story-card-desc">Step into Gawai Dayak — Sarawak's beloved harvest festival — with Kenyalang the Rhinoceros Hornbill as your guide! Journey through the traditions of the Iban people of Borneo: the longhouse ruai, ngajat warrior dance, miring ceremony, feast of lemang, and fireworks over the Sarawak River. Learn Malay words as you explore in this bilingual English &amp; Malay children's book.</p>
+          <a href="https://www.amazon.com/dp/B0H1BSF76P" target="_blank" class="story-card-buy">
+            Read Now
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-card-img">
           <picture><source srcset="images/eid-kindle.avif" type="image/avif"><img src="images/eid-kindle.jpg" alt="Eid Under the Stars Children's Book" /></picture>
         </div>
         <div class="story-card-body">
@@ -1008,10 +1022,11 @@
       'avurudu':         [{ month: 4, day: 13, window: 14 }],
       'akshaya-tritiya': [{ month: 4, day: 20, window: 21 }],
       'eid':             [{ month: 6, day: 7,  window: 60 }], // Eid Al Adha 2026 approx — wide window: book is published
+      'gawai':           [{ month: 6, day: 1,  window: 21 }], // Gawai Dayak — June 1
     };
 
     // Books published in last 90 days get a "New" badge (right-hand corner)
-    const NEW_BOOKS = ['akshaya-tritiya', 'avurudu', 'khmer', 'eid'];
+    const NEW_BOOKS = ['akshaya-tritiya', 'avurudu', 'khmer', 'eid', 'gawai'];
 
     function dayOfYear(d) {
       const start = new Date(d.getFullYear(), 0, 0);
