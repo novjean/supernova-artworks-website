@@ -106,6 +106,7 @@
       border-radius: 4px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.12);
       cursor: pointer;
+      display: block;
     }
     .hero-card img {
       width: 100%; height: 100%; object-fit: cover; display: block;
@@ -225,6 +226,7 @@
     .featured-img {
       position: relative; overflow: hidden;
       min-height: 540px;
+      display: block;
     }
     .featured-img img {
       width: 100%; height: 100%; object-fit: cover;
@@ -577,18 +579,18 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-card tall">
+      <a href="https://www.amazon.com/dp/B0GZ7782RJ" target="_blank" class="hero-card tall">
         <picture><source srcset="images/eid.avif" type="image/avif"><img src="images/eid.jpg" alt="Eid Under the Stars" /></picture>
         <div class="hero-card-label">Eid Under the Stars</div>
-      </div>
-      <div class="hero-card">
+      </a>
+      <a href="https://www.amazon.com/dp/B0GT9K4LBY" target="_blank" class="hero-card">
         <picture><source srcset="images/songkran.avif" type="image/avif"><img src="images/songkran.png" alt="Songkran" /></picture>
         <div class="hero-card-label">Songkran Festival</div>
-      </div>
-      <div class="hero-card">
+      </a>
+      <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="hero-card">
         <picture><source srcset="images/poila-baishakh-tall.avif" type="image/avif"><img src="images/poila-baishakh-tall.png" alt="Poila Baishakh" /></picture>
         <div class="hero-card-label">Poila Baishakh</div>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -766,10 +768,10 @@
 
   <!-- FEATURED SPREAD — Eid Under the Stars -->
   <div class="featured" data-book="eid">
-    <div class="featured-img">
+    <a href="https://www.amazon.com/dp/B0GZ7782RJ" target="_blank" class="featured-img">
       <picture><source srcset="images/eid.avif" type="image/avif"><img src="images/eid.jpg" alt="Eid Under the Stars" /></picture>
       <div class="featured-img-overlay"></div>
-    </div>
+    </a>
     <div class="featured-body">
       <div class="featured-num">11</div>
       <div class="featured-kicker">🌙 Arabia · Bilingual English &amp; Arabic · New Release</div>
@@ -1001,6 +1003,17 @@
   </footer>
 
   <script>
+    // ── CLICKABLE CARDS ── clicking anywhere on a card opens its Amazon link
+    ['.book-cell', '.story-card', '.mini-cell'].forEach(selector => {
+      document.querySelectorAll(selector).forEach(card => {
+        card.addEventListener('click', e => {
+          if (e.target.closest('a')) return; // let real <a> tags handle themselves
+          const link = card.querySelector('a[href]');
+          if (link) window.open(link.href, '_blank');
+        });
+      });
+    });
+
     // ── NAV SCROLL ──
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {

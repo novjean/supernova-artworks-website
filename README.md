@@ -82,11 +82,65 @@ Use `crf 18` for high quality. Range is 1–63 (lower = better). Do NOT go above
 
 1. Copy front cover to `images/BOOKNAME.png`
 2. Convert to AVIF (command above)
-3. Add a new `.book-cell` block in layout-c.html (copy an existing one)
+3. Add a new `.book-cell` block in `index.html` (copy an existing one)
 4. Set `data-book="BOOKNAME"` on the `.book-cell` div
-5. Add the festival date entry to `FESTIVALS` in the JS block
-6. Add `BOOKNAME` to `NEW_BOOKS` array in the JS (for the "New" badge)
-7. Commit and push — GitHub Pages deploys in ~1 minute
+5. **Set the Amazon ASIN link on the `.book-cell-buy` anchor** — this is what makes the whole card clickable (see Clickable Images below)
+6. Add the festival date entry to `FESTIVALS` in the JS block
+7. Add `BOOKNAME` to `NEW_BOOKS` array in the JS (for the "New" badge)
+8. Commit and push — GitHub Pages deploys in ~1 minute
+
+## Clickable Images
+
+Every image on the site links to its Amazon page. The system works differently depending on which section the image is in:
+
+### Book grid (`.book-cell`) — automatic via JS
+
+The whole card becomes clickable automatically. No extra work needed — the JS reads the `href` from the `.book-cell-buy` anchor already inside each card and opens it when the card is clicked.
+
+**Rule: always fill in the `.book-cell-buy` href with the direct Amazon ASIN link:**
+```html
+<div class="book-cell" data-book="eid">
+  <div class="book-cell-img"> ... </div>
+  ...
+  <a href="https://www.amazon.com/dp/ASIN_HERE" target="_blank" class="book-cell-buy">
+    Buy on Amazon ...
+  </a>
+</div>
+```
+If no ASIN exists yet, use the author page as a fallback:
+`https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR`
+
+### Story cards (`.story-card`) — automatic via JS
+
+Same as above — JS reads the `.story-card-buy` href and makes the whole card clickable. Always set the correct link on `.story-card-buy`.
+
+### Mini grid (`.mini-cell`) — automatic via JS
+
+JS reads the first `<a>` inside `.mini-cell` (the "Buy →" overlay link) and makes the cell clickable. Always set the `href` on that link.
+
+### Hero images (`.hero-card`) — link is on the element itself
+
+Hero cards are `<a>` tags, not `<div>` tags. When adding a new hero image, use:
+```html
+<a href="https://www.amazon.com/dp/ASIN_HERE" target="_blank" class="hero-card">
+  <picture>...</picture>
+  <div class="hero-card-label">Book Title</div>
+</a>
+```
+
+### Featured spread (`.featured-img`) — link is on the element itself
+
+The featured image wrapper is an `<a>` tag. Update its `href` when changing the featured book:
+```html
+<a href="https://www.amazon.com/dp/ASIN_HERE" target="_blank" class="featured-img">
+  <picture>...</picture>
+  <div class="featured-img-overlay"></div>
+</a>
+```
+
+### Geo-routing
+
+The JS geo-routing block automatically rewrites all `amazon.com` links to the user's local marketplace (e.g. `amazon.co.uk`, `amazon.de`). This applies to every link on the page — including hero and featured `<a>` tags — so no extra work is needed when adding new books.
 
 ## Deployment
 
