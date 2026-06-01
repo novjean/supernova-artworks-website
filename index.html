@@ -579,17 +579,17 @@
       </div>
     </div>
     <div class="hero-visual">
-      <a href="https://www.amazon.com/dp/B0GZ7782RJ" target="_blank" class="hero-card tall">
+      <a href="https://www.amazon.com/dp/B0H32PV6ZC" target="_blank" class="hero-card tall">
+        <picture><source srcset="images/inti-raymi.avif" type="image/avif"><img src="images/inti-raymi.jpg" alt="Inti Raymi" /></picture>
+        <div class="hero-card-label">Inti Raymi</div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0GZ7782RJ" target="_blank" class="hero-card">
         <picture><source srcset="images/eid.avif" type="image/avif"><img src="images/eid.jpg" alt="Eid Under the Stars" /></picture>
         <div class="hero-card-label">Eid Under the Stars</div>
       </a>
       <a href="https://www.amazon.com/dp/B0GT9K4LBY" target="_blank" class="hero-card">
         <picture><source srcset="images/songkran.avif" type="image/avif"><img src="images/songkran.png" alt="Songkran" /></picture>
         <div class="hero-card-label">Songkran Festival</div>
-      </a>
-      <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="hero-card">
-        <picture><source srcset="images/poila-baishakh-tall.avif" type="image/avif"><img src="images/poila-baishakh-tall.png" alt="Poila Baishakh" /></picture>
-        <div class="hero-card-label">Poila Baishakh</div>
       </a>
     </div>
   </section>
@@ -619,6 +619,18 @@
   </div>
 
   <div class="book-grid">
+    <div class="book-cell" data-book="inti-raymi">
+      <div class="book-cell-img">
+        <picture><source srcset="images/inti-raymi.avif" type="image/avif"><img src="images/inti-raymi.jpg" alt="Inti Raymi" /></picture>
+      </div>
+      <div class="book-cell-flag">🇵🇪</div>
+      <div class="book-cell-title">Inti Raymi Coloring Book</div>
+      <div class="book-cell-meta">Peru · 38 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0H32PV6ZC" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
     <div class="book-cell" data-book="eid">
       <div class="book-cell-img">
         <picture><source srcset="images/eid.avif" type="image/avif"><img src="images/eid.jpg" alt="Eid Under the Stars" /></picture>
@@ -1036,10 +1048,11 @@
       'akshaya-tritiya': [{ month: 4, day: 20, window: 21 }],
       'eid':             [{ month: 6, day: 7,  window: 60 }], // Eid Al Adha 2026 approx — wide window: book is published
       'gawai':           [{ month: 6, day: 1,  window: 21 }], // Gawai Dayak — June 1
+      'inti-raymi':      [{ month: 6, day: 24, window: 21 }], // Inti Raymi — June 24
     };
 
     // Books published in last 90 days get a "New" badge (right-hand corner)
-    const NEW_BOOKS = ['akshaya-tritiya', 'avurudu', 'khmer', 'eid', 'gawai'];
+    const NEW_BOOKS = ['inti-raymi', 'akshaya-tritiya', 'avurudu', 'khmer', 'eid', 'gawai'];
 
     function dayOfYear(d) {
       const start = new Date(d.getFullYear(), 0, 0);
