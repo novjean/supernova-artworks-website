@@ -579,17 +579,17 @@
       </div>
     </div>
     <div class="hero-visual">
-      <a href="https://www.amazon.com/dp/B0H32PV6ZC" target="_blank" class="hero-card tall">
+      <a href="https://www.amazon.com/dp/B0H5BFMX8L" target="_blank" class="hero-card tall">
+        <picture><source srcset="images/hemis.avif" type="image/avif"><img src="images/hemis.jpg" alt="Cham Dances of Hemis" /></picture>
+        <div class="hero-card-label">Cham Dances of Hemis</div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0H32PV6ZC" target="_blank" class="hero-card">
         <picture><source srcset="images/inti-raymi.avif" type="image/avif"><img src="images/inti-raymi.jpg" alt="Inti Raymi" /></picture>
         <div class="hero-card-label">Inti Raymi</div>
       </a>
       <a href="https://www.amazon.com/dp/B0GZ7782RJ" target="_blank" class="hero-card">
         <picture><source srcset="images/eid.avif" type="image/avif"><img src="images/eid.jpg" alt="Eid Under the Stars" /></picture>
         <div class="hero-card-label">Eid Under the Stars</div>
-      </a>
-      <a href="https://www.amazon.com/dp/B0GT9K4LBY" target="_blank" class="hero-card">
-        <picture><source srcset="images/songkran.avif" type="image/avif"><img src="images/songkran.png" alt="Songkran" /></picture>
-        <div class="hero-card-label">Songkran Festival</div>
       </a>
     </div>
   </section>
@@ -772,6 +772,18 @@
       <div class="book-cell-title">Color with Monalisa: Shubho Nababarsha!</div>
       <div class="book-cell-meta">West Bengal · 38 Pages · $9.99</div>
       <a href="https://www.amazon.com/stores/Novjean-John-Kannathara/author/B0FJRNF1VR" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <div class="book-cell" data-book="hemis">
+      <div class="book-cell-img">
+        <picture><source srcset="images/hemis.avif" type="image/avif"><img src="images/hemis.jpg" alt="Cham Dances of Hemis" /></picture>
+      </div>
+      <div class="book-cell-flag">🇮🇳</div>
+      <div class="book-cell-title">Cham Dances of Hemis</div>
+      <div class="book-cell-meta">Ladakh, India · 36 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0H5BFMX8L" target="_blank" class="book-cell-buy">
         Buy on Amazon
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
       </a>
@@ -1049,10 +1061,11 @@
       'eid':             [{ month: 6, day: 7,  window: 60 }], // Eid Al Adha 2026 approx — wide window: book is published
       'gawai':           [{ month: 6, day: 1,  window: 21 }], // Gawai Dayak — June 1
       'inti-raymi':      [{ month: 6, day: 24, window: 21 }], // Inti Raymi — June 24
+      'hemis':           [{ month: 6, day: 27, window: 14 }], // Hemis Festival — late June
     };
 
     // Books published in last 90 days get a "New" badge (right-hand corner)
-    const NEW_BOOKS = ['inti-raymi', 'akshaya-tritiya', 'avurudu', 'khmer', 'eid', 'gawai'];
+    const NEW_BOOKS = ['hemis', 'inti-raymi', 'akshaya-tritiya', 'avurudu', 'khmer', 'eid', 'gawai'];
 
     function dayOfYear(d) {
       const start = new Date(d.getFullYear(), 0, 0);
