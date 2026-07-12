@@ -579,17 +579,17 @@
       </div>
     </div>
     <div class="hero-visual">
-      <a href="https://www.amazon.com/dp/B0H5BFMX8L" target="_blank" class="hero-card tall">
+      <a href="https://www.amazon.com/dp/B0H7XTLCSY" target="_blank" class="hero-card tall">
+        <picture><source srcset="images/land-of-song.avif" type="image/avif"><img src="images/land-of-song.jpg" alt="Land of Song" /></picture>
+        <div class="hero-card-label">Land of Song</div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0H6Y9YJKB" target="_blank" class="hero-card">
+        <picture><source srcset="images/obon.avif" type="image/avif"><img src="images/obon.jpg" alt="Obon" /></picture>
+        <div class="hero-card-label">Obon</div>
+      </a>
+      <a href="https://www.amazon.com/dp/B0H5BFMX8L" target="_blank" class="hero-card">
         <picture><source srcset="images/hemis.avif" type="image/avif"><img src="images/hemis.jpg" alt="Cham Dances of Hemis" /></picture>
         <div class="hero-card-label">Cham Dances of Hemis</div>
-      </a>
-      <a href="https://www.amazon.com/dp/B0H32PV6ZC" target="_blank" class="hero-card">
-        <picture><source srcset="images/inti-raymi.avif" type="image/avif"><img src="images/inti-raymi.jpg" alt="Inti Raymi" /></picture>
-        <div class="hero-card-label">Inti Raymi</div>
-      </a>
-      <a href="https://www.amazon.com/dp/B0GZ7782RJ" target="_blank" class="hero-card">
-        <picture><source srcset="images/eid.avif" type="image/avif"><img src="images/eid.jpg" alt="Eid Under the Stars" /></picture>
-        <div class="hero-card-label">Eid Under the Stars</div>
       </a>
     </div>
   </section>
@@ -619,6 +619,30 @@
   </div>
 
   <div class="book-grid">
+    <div class="book-cell" data-book="land-of-song">
+      <div class="book-cell-img">
+        <picture><source srcset="images/land-of-song.avif" type="image/avif"><img src="images/land-of-song.jpg" alt="Land of Song" /></picture>
+      </div>
+      <div class="book-cell-flag">🐉</div>
+      <div class="book-cell-title">Land of Song</div>
+      <div class="book-cell-meta">Wales · 36 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0H7XTLCSY" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <div class="book-cell" data-book="obon">
+      <div class="book-cell-img">
+        <picture><source srcset="images/obon.avif" type="image/avif"><img src="images/obon.jpg" alt="Obon" /></picture>
+      </div>
+      <div class="book-cell-flag">🇯🇵</div>
+      <div class="book-cell-title">Obon Coloring Book</div>
+      <div class="book-cell-meta">Japan · 36 Pages · $9.99</div>
+      <a href="https://www.amazon.com/dp/B0H6Y9YJKB" target="_blank" class="book-cell-buy">
+        Buy on Amazon
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
     <div class="book-cell" data-book="hemis">
       <div class="book-cell-img">
         <picture><source srcset="images/hemis.avif" type="image/avif"><img src="images/hemis.jpg" alt="Cham Dances of Hemis" /></picture>
@@ -1062,10 +1086,12 @@
       'gawai':           [{ month: 6, day: 1,  window: 21 }], // Gawai Dayak — June 1
       'inti-raymi':      [{ month: 6, day: 24, window: 21 }], // Inti Raymi — June 24
       'hemis':           [{ month: 6, day: 27, window: 14 }], // Hemis Festival — late June
+      'obon':            [{ month: 8, day: 13, window: 21 }], // Obon — mid-August
+      'land-of-song':    [{ month: 8, day: 1,  window: 21 }], // National Eisteddfod of Wales — Aug 1-8
     };
 
     // Books published in last 90 days get a "New" badge (right-hand corner)
-    const NEW_BOOKS = ['hemis', 'inti-raymi', 'akshaya-tritiya', 'avurudu', 'khmer', 'eid', 'gawai'];
+    const NEW_BOOKS = ['land-of-song', 'obon', 'hemis', 'inti-raymi', 'akshaya-tritiya', 'avurudu', 'khmer', 'eid', 'gawai'];
 
     function dayOfYear(d) {
       const start = new Date(d.getFullYear(), 0, 0);
